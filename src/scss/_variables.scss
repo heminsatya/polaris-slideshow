@@ -1,0 +1,328 @@
+// ---------- Variables ---------- //
+$name-slideshow:          "slideshow";      // Name key for slideshow component
+$name-slideshow-item:     "item";           // Name key for slideshow--item
+$name-slideshow-media:    "media";          // Name key for slideshow--media
+$name-slideshow-overlays: "overlays";       // Name key for slideshow--overlays
+$name-slideshow-overlay:  "overlay";        // Name key for slideshow--overlay
+$name-slideshow-captions: "captions";       // Name key for slideshow--captions
+$name-slideshow-caption:  "caption";        // Name key for slideshow--caption
+$name-slideshow-progress: "progress";       // Name key for slideshow--progress
+$name-slideshow-counter:  "counter";        // Name key for slideshow--counter
+$name-slideshow-controls: "controls";       // Name key for slideshow--controls
+$name-slideshow-prev:     "prev";           // Name key for slideshow--prev
+$name-slideshow-next:     "next";           // Name key for slideshow--next
+$name-slideshow-dots:     "dots";           // Name key for slideshow--dots
+$name-slideshow-filter:   "filter";         // Name key for slideshow--filter
+
+// Component
+$slideshow-styles: (
+    width:      auto,
+    height:     100%,
+    max-width:  100%,
+    position:   relative,
+    z-index:    20,
+    overflow:   hidden,
+) !default;
+
+// Children
+// slideshow--item
+$slideshow-item: (
+    width:    100%,
+    height:   inherit,
+    position: absolute,
+    z-index:  -1,
+    overflow: visible
+) !default;
+
+// .slideshow--item.active
+$slideshow-item-active: (
+    z-index: unset
+) !default;
+
+// slideshow--media
+$slideshow-media: (
+    display:        flex,
+    flex-direction: column,
+    align-items:    center,
+    align-content:  center,
+    height:         inherit,
+    z-index:        0,
+) !default;
+
+// .slideshow--item.active .slideshow--media
+$slideshow-media-active: (
+    z-index: 1
+) !default;
+
+// slideshow--media > *
+$slideshow-media-items: (
+    max-width: 100%,
+) !default;
+
+// slideshow--captions
+$slideshow-captions: (
+    z-index:        4,
+    position:       absolute,
+    bottom:         1rem,
+    display:        flex,
+    flex-direction: column,
+    align-items:    center,
+) !default;
+
+$slideshow-captions-ltr: (
+    left: 1rem,
+) !default;
+
+$slideshow-captions-rtl: (
+    right: 1rem,
+) !default;
+
+// slideshow--caption
+$slideshow-caption: (
+    font-size:     font-size(xl),
+    line-height:   1,
+    padding:       1rem,
+    margin-top:    0.5rem,
+    margin-bottom: 0.5rem,
+    width:         max-content,
+) !default;
+
+$caption-colors: (
+    "light": (
+        color:            color(gray-900),
+        background-color: colora('white', 0.9)
+    ),
+    "dark": (
+        color:            color(gray-100),
+        background-color: colora('black', 0.8)
+    ),
+    "app": (
+        color:            white,
+        background-color: colora('app', 0.9)
+    )
+) !default;
+
+// slideshow--overlays
+$slideshow-overlays: (
+    z-index:        3,
+    position:       absolute,
+    display:        flex,
+    flex-direction: column,
+    align-items:    center,
+) !default;
+
+// Progress
+$slideshow-progress: (
+    position:   absolute,
+    top:        0,
+    width:      0%,
+    height:     0.1875rem,
+    z-index:    6,
+    // transition: width 0.01s
+) !default;
+
+$slideshow-progress-ltr: (
+    left: 0,
+) !default;
+
+$slideshow-progress-rtl: (
+    right: 0,
+) !default;
+
+$progress-colors: (
+    "light": (
+        background-color: color('light')
+    ),
+    "dark": (
+        background-color: color('dark')
+    ),
+    "app": (
+        background-color: color('app')
+    )
+) !default;
+
+// Counter
+$slideshow-counter: (
+    font-size: font-size(lg),
+    padding:   padding-component(sm),
+    position: absolute,
+    top:      1rem,
+    width:    auto,
+    height:   auto,
+    z-index:  5
+) !default;
+
+$slideshow-counter-ltr: (
+    left: 1rem,
+) !default;
+
+$slideshow-counter-rtl: (
+    right: 1rem,
+) !default;
+
+$counter-colors: (
+    "light": (
+        color:            color(gray-800),
+        background-color: colora('white', 0.6)
+    ),
+    "dark": (
+        color:            color(gray-200),
+        background-color: colora('black', 0.5)
+    ),
+    "app": (
+        color:            colora('white', 0.9),
+        background-color: colora('app', 0.6)
+    )
+) !default;
+
+// Controls
+$slideshow-controls: (
+    cursor:      pointer,
+    position:    absolute,
+    top:         50%,
+    transform:   translate(0, -50%),
+    width:       40px,
+    height:      60px,
+    line-height: 60px,
+    text-align:  center,
+    font-size:   24px,
+    background:  transparent,
+    user-select: none,
+    transition:  all transition(xs),
+    z-index:     8,
+    opacity:     0
+) !default;
+
+$slideshow-controls-hover: (
+    opacity: 1
+) !default;
+
+$slideshow-prev: (
+    transform: translate(0%,-50%)
+) !default;
+
+$slideshow-prev-ltr: (
+    left: 1rem,
+) !default;
+
+$slideshow-prev-rtl: (
+    right: 1rem,
+) !default;
+
+$slideshow-next: (
+    transform: translate(0%,-50%)
+) !default;
+
+$slideshow-next-ltr: (
+    right: 1rem,
+) !default;
+
+$slideshow-next-rtl: (
+    left: 1rem,
+) !default;
+
+$controls-colors: (
+    "light": (
+        color:            color('gray-800'),
+        background-color: colora('white', 0.7)
+    ),
+    "dark": (
+        color:            color('gray-200'),
+        background-color: colora('black', 0.6)
+    ),
+    "app": (
+        color:            colora('white', 0.9),
+        background-color: colora('app', 0.7)
+    )
+) !default;
+
+$controls-colors-hover: (
+    "light": (
+        color:            color('gray-900'),
+        background-color: colora('white', 0.9)
+    ),
+    "dark": (
+        color:            color('gray-100'),
+        background-color: colora('black', 0.8)
+    ),
+    "app": (
+        color:            white,
+        background-color: colora('app', 0.9)
+    )
+) !default;
+
+// slideshow--dots
+$slideshow-dots: (
+    font-size:   font-size(xl),
+    line-height: 1,
+    width:       auto,
+    margin:      0,
+    padding:     0,
+    list-style: none,
+    z-index:     7,
+    position:    absolute,
+    bottom:      1rem,
+) !default;
+
+$slideshow-dots-ltr: (
+    right:     1rem,
+    direction: ltr
+) !default;
+
+$slideshow-dots-rtl: (
+    left:      1rem,
+    direction: rtl
+) !default;
+
+$slideshow-dots-li: (
+    margin:     0 0.25rem,
+    padding:    0,
+    width:      0.5rem,
+    height:     0.5rem,
+    display:    inline-block,
+    cursor:     pointer,
+    transition: all transition(sm) ease-in-out,
+) !default;
+
+$slideshow-active-dot: (
+    width: 2rem,
+) !default;
+
+$dots-li-colors: (
+    "light": (
+        background-color: colora('white', 0.9)
+    ),
+    "dark": (
+        background-color: colora('black', 0.8)
+    ),
+    "app": (
+        background-color: colora('app', 0.9)
+    )
+) !default;
+
+// slideshow--filter
+$filter-styles: (
+    position: absolute,
+    top:      0,
+    left:     0,
+    width:    100%,
+    height:   100%,
+    z-index:  2,
+) !default;
+
+$filter-colors: (
+    "light": (
+        background-color: colora('white', 0.25)
+    ),
+    "dark": (
+        background-color: colora('black', 0.4)
+    )
+) !default;
+
+$slideshow-radius: 0.5rem !default;
+$slideshow-media-radius:    0.5rem !default;
+$slideshow-caption-radius:  0.5rem !default;
+$slideshow-progress-radius: 0.5rem !default;
+$slideshow-counter-radius:  0.5rem !default;
+$slideshow-controls-radius: 0.5rem !default;
+$slideshow-dots-radius:     0.5rem !default;

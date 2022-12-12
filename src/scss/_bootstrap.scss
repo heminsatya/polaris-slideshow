@@ -1,0 +1,126 @@
+/**
+ * Polaris Slideshow Plugin v1.0.0
+ * MIT License github.com/heminsatya/polaris-plugins | © 2022 polarisui.com
+**/
+// -------------------------------------------------- //
+//                    Dependencies                    //
+// -------------------------------------------------- //
+@import "../../node_modules/polaris-core/src/scss/functions";
+@import "./_functions";
+
+@import "../../node_modules/polaris-core/src/scss/mixins";
+@import "./_mixins";
+
+@import "../../node_modules/polaris-core/src/scss/_variables/naming";
+@import "../../node_modules/polaris-core/src/scss/_variables/config";
+@import "../../node_modules/polaris-colors/src/scss/variables";
+@import "./_variables";
+
+
+/* -------------------------------------------------- */
+/*                      Slideshow                     */
+/* -------------------------------------------------- */
+// -- Component -- //
+// Styles
+@include component-styles($slideshow-styles, $name-slideshow);
+
+
+// -- Children -- //
+// Items
+@include child-styles($slideshow-item, $name-slideshow, $name-slideshow-item);
+
+$name-item-active: '.' + $name-slideshow + $chi + $name-slideshow-item + '.' + $name-active;
+@include custom-styles($slideshow-item-active, $name-item-active);
+
+// Media
+@include child-styles($slideshow-media, $name-slideshow, $name-slideshow-media);
+@include child-item-styles($slideshow-media-items, $name-slideshow, $name-slideshow-media);
+
+$name-media-active: '.' + $name-slideshow + $chi + $name-slideshow-item + '.' + $name-active + ' .' + $name-slideshow + $chi + $name-slideshow-media;
+@include custom-styles($slideshow-media-active, $name-media-active);
+
+// Captions
+@include child-styles($slideshow-captions, $name-slideshow, $name-slideshow-captions, false, true, $slideshow-captions-ltr, $slideshow-captions-rtl);
+@include child-styles($slideshow-caption, $name-slideshow, $name-slideshow-caption);
+
+#{'.' + $name-slideshow + $chi + $name-slideshow-captions + ' .' + $name-slideshow + $chi + $name-slideshow-caption + ':first-child'} {
+    margin-top: 0
+}
+
+#{'.' + $name-slideshow + $chi + $name-slideshow-captions + ' .' + $name-slideshow + $chi + $name-slideshow-caption + ':last-child'} {
+    margin-bottom: 0
+}
+
+@include child-colors($caption-colors, $name-slideshow, $name-slideshow-caption);
+
+// Overlays
+@include child-styles($slideshow-overlays, $name-slideshow, $name-slideshow-overlays);
+
+// Options
+// Progress
+@include child-styles($slideshow-progress, $name-slideshow, $name-slideshow-progress, false, true, $slideshow-progress-ltr, $slideshow-progress-rtl);
+@include child-colors($progress-colors, $name-slideshow, $name-slideshow-progress);
+
+// Counter
+@include child-styles($slideshow-counter, $name-slideshow, $name-slideshow-counter, false, true, $slideshow-counter-ltr, $slideshow-counter-rtl);
+@include child-colors($counter-colors, $name-slideshow, $name-slideshow-counter);
+
+// Controls
+$name-controls: '.' + $name-slideshow + $chi + $name-slideshow-prev + ', .' + $name-slideshow + $chi + $name-slideshow-next;
+$name-controls-hover: '.' + $name-slideshow + ':hover .' + $name-slideshow + $chi + $name-slideshow-prev + ', .' + $name-slideshow + ':hover .' + $name-slideshow + $chi + $name-slideshow-next;
+@include custom-styles($slideshow-controls, $name-controls);
+@include custom-styles($slideshow-controls-hover, $name-controls-hover);
+
+@include child-styles($slideshow-prev, $name-slideshow, $name-slideshow-prev, false, true, $slideshow-prev-ltr, $slideshow-prev-rtl);
+@include child-styles($slideshow-next, $name-slideshow, $name-slideshow-next, false, true, $slideshow-next-ltr, $slideshow-next-rtl);
+
+@include child-colors($controls-colors, $name-slideshow, $name-slideshow-prev);
+@include child-colors-hover($controls-colors-hover, $name-slideshow, $name-slideshow-prev);
+
+@include child-colors($controls-colors, $name-slideshow, $name-slideshow-next);
+@include child-colors-hover($controls-colors-hover, $name-slideshow, $name-slideshow-next);
+
+// Dots 
+@include child-styles($slideshow-dots, $name-slideshow, $name-slideshow-dots, false, true, $slideshow-dots-ltr, $slideshow-dots-rtl);
+@include child-item-styles($slideshow-dots-li, $name-slideshow, $name-slideshow-dots, 'li');
+
+$name-active-dot: '.' + $name-slideshow + $chi + $name-slideshow-dots + ' > li.' + $name-active;
+@include custom-styles($slideshow-active-dot, $name-active-dot);
+
+@include child-item-colors($dots-li-colors, $name-slideshow, $name-slideshow-dots, 'li');
+
+// Filter
+@include child-styles($filter-styles, $name-slideshow, $name-slideshow-filter);
+@include modifier-colors($filter-colors, $name-slideshow + $chi + $name-slideshow-filter, true);
+
+// Empty styles
+.#{$name-slideshow + $chi + $name-slideshow-caption}:empty,
+.#{$name-slideshow + $chi + $name-slideshow-counter}:empty {
+    display: none !important;
+}
+
+// Round slideshow
+.#{$name-slideshow + $mod + $name-radius} .#{$name-slideshow + $chi + $name-slideshow-media} > * {
+    border-radius: #{$slideshow-media-radius};
+}
+
+.#{$name-slideshow + $mod + $name-radius} .#{$name-slideshow + $chi + $name-slideshow-caption} {
+    border-radius: #{$slideshow-caption-radius};
+}
+
+.#{$name-slideshow + $mod + $name-radius} .#{$name-slideshow + $chi + $name-slideshow-progress} {
+    border-radius: #{$slideshow-progress-radius};
+}
+
+.#{$name-slideshow + $mod + $name-radius} .#{$name-slideshow + $chi + $name-slideshow-counter} {
+    border-radius: #{$slideshow-counter-radius};
+}
+
+.#{$name-slideshow + $mod + $name-radius} .#{$name-slideshow + $chi + $name-slideshow-prev},
+.#{$name-slideshow + $mod + $name-radius} .#{$name-slideshow + $chi + $name-slideshow-next} {
+    border-radius: #{$slideshow-controls-radius};
+}
+
+.#{$name-slideshow + $mod + $name-radius} .#{$name-slideshow + $chi + $name-slideshow-dots} > li {
+    border-radius: #{$slideshow-dots-radius};
+}
