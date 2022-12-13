@@ -1087,11 +1087,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "Slideshow": () => (/* binding */ Slideshow)
 /* harmony export */ });
-/* harmony import */ var _node_modules_polaris_core_dist_js_modules_Animations__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../node_modules/polaris-core/dist/js/modules/Animations */ "./node_modules/polaris-core/dist/js/modules/Animations.js");
+/* harmony import */ var polaris_core_dist_js_modules_Animations__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! polaris-core/dist/js/modules/Animations */ "./node_modules/polaris-core/dist/js/modules/Animations.js");
 
 "Content-Type: application/javascript";
 /**
- * Polaris Slideshow Plugin v1.1.0
+ * Polaris Slideshow Plugin v1.2.0
  * MIT License github.com/heminsatya/polaris-plugins | © 2022 polarisui.com
 **/
 /**
@@ -1101,7 +1101,7 @@ __webpack_require__.r(__webpack_exports__);
 /**
  * @desc The Slideshow class for handling slideshow componet and its slides
  */
-class Slideshow extends _node_modules_polaris_core_dist_js_modules_Animations__WEBPACK_IMPORTED_MODULE_0__.Animations {
+class Slideshow extends polaris_core_dist_js_modules_Animations__WEBPACK_IMPORTED_MODULE_0__.Animations {
     /**
      * @desc Constructor method
      *

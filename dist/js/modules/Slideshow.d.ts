@@ -1,11 +1,11 @@
 /**
- * Polaris Slideshow Plugin v1.1.0
+ * Polaris Slideshow Plugin v1.2.0
  * MIT License github.com/heminsatya/polaris-plugins | © 2022 polarisui.com
 **/
 /**
  * Dependencies
  */
-import { Animations } from "../../../node_modules/polaris-core/dist/js/modules/Animations";
+import { Animations } from "polaris-core/dist/js/modules/Animations";
 /**
  * @desc The Slideshow class for handling slideshow componet and its slides
  */
