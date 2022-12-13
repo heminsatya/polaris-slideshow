@@ -1,5 +1,5 @@
 const msg = `
-    Polaris Slideshow Plugin v1.2.0
+    Polaris Slideshow Plugin v1.2.1
 `
 
 module.exports = msg
