@@ -1,4 +1,4 @@
-# Polaris Slideshow Plugin (v1.2.1)
+# Polaris Slideshow Plugin (v1.2.2)
 
 In addition to the built-in core colors comes with [Polaris framework](https://github.com/heminsatya/polaris-core), you can also use a set of flat and beautiful colors.
 
@@ -68,14 +68,12 @@ cd path-to/polaris-slideshow/
 ```
 npm install
 ```
+
 Now, you have everything set-up. You can customize it however you want.
 
-Next step after customization is to rebuild the CSS libraries.
+Next step after customization is to rebuild CSS & JS libraries.
 
 * To rebuild the CSS libraries run:
-
-To rebuild the CSS libraries run:
-
 ```
 npm run css
 npm run css-dev
@@ -83,8 +81,7 @@ npm run css-rtl
 npm run css-rtl-dev
 ```
 
-To rebuild the JavaScript libraries run:
-
+* To rebuild the JavaScript libraries run:
 ```
 npm run js-mod
 npm run js
