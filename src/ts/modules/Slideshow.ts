@@ -126,7 +126,7 @@ export class Slideshow extends Animations {
         super();
 
         // Valid slideshow selector
-        if (this.check(slideshow)['status']) {
+        if (this.exist(slideshow)['status']) {
             // String slideshow selector
             if (typeof(slideshow) === "string") {
                 this.slideshow = document.querySelector(slideshow);

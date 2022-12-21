@@ -98,7 +98,7 @@ $caption-colors: (
     ),
     "app": (
         color:            white,
-        background-color: colora('app', 0.9)
+        background-color: var(--app-a900, colora(app, 0.9))
     )
 ) !default;
 
@@ -137,7 +137,7 @@ $progress-colors: (
         background-color: color('dark')
     ),
     "app": (
-        background-color: color('app')
+        background-color: color(app)
     )
 ) !default;
 
@@ -171,7 +171,7 @@ $counter-colors: (
     ),
     "app": (
         color:            colora('white', 0.9),
-        background-color: colora('app', 0.6)
+        background-color: var(--app-a600, colora(app, 0.6))
     )
 ) !default;
 
@@ -232,7 +232,7 @@ $controls-colors: (
     ),
     "app": (
         color:            colora('white', 0.9),
-        background-color: colora('app', 0.7)
+        background-color: var(--app-a700, colora(app, 0.7))
     )
 ) !default;
 
@@ -247,7 +247,7 @@ $controls-colors-hover: (
     ),
     "app": (
         color:            white,
-        background-color: colora('app', 0.9)
+        background-color: var(--app-a900, colora(app, 0.9))
     )
 ) !default;
 
@@ -296,7 +296,7 @@ $dots-li-colors: (
         background-color: colora('black', 0.8)
     ),
     "app": (
-        background-color: colora('app', 0.9)
+        background-color: var(--app-a900, colora(app, 0.9))
     )
 ) !default;
 
