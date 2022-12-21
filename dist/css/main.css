@@ -1,6 +1,6 @@
 @charset "UTF-8";
 /**
- * Polaris Slideshow Plugin v1.2.1
+ * Polaris Slideshow Plugin v1.2.2
  * MIT License github.com/heminsatya/polaris-plugins | © 2022 polarisui.com
 **/
 /* -------------------------------------------------- */
@@ -85,7 +85,7 @@
 
 .slideshow-app .slideshow--caption {
   color: white;
-  background-color: rgba(66, 131, 242, 0.9);
+  background-color: var(--app-a900, rgba(66, 131, 242, 0.9));
 }
 
 .slideshow--overlays {
@@ -116,7 +116,7 @@
 }
 
 .slideshow-app .slideshow--progress {
-  background-color: #4283F2;
+  background-color: var(--app, #4283F2);
 }
 
 .slideshow--counter {
@@ -144,7 +144,7 @@
 
 .slideshow-app .slideshow--counter {
   color: rgba(255, 255, 255, 0.9);
-  background-color: rgba(66, 131, 242, 0.6);
+  background-color: var(--app-a600, rgba(66, 131, 242, 0.6));
 }
 
 .slideshow--prev, .slideshow--next {
@@ -192,7 +192,7 @@
 
 .slideshow-app .slideshow--prev {
   color: rgba(255, 255, 255, 0.9);
-  background-color: rgba(66, 131, 242, 0.7);
+  background-color: var(--app-a700, rgba(66, 131, 242, 0.7));
 }
 
 .slideshow-dark .slideshow--prev:hover,
@@ -209,7 +209,7 @@
 
 .slideshow-app .slideshow--prev:hover {
   color: white;
-  background-color: rgba(66, 131, 242, 0.9);
+  background-color: var(--app-a900, rgba(66, 131, 242, 0.9));
 }
 
 .slideshow-dark .slideshow--next,
@@ -226,7 +226,7 @@
 
 .slideshow-app .slideshow--next {
   color: rgba(255, 255, 255, 0.9);
-  background-color: rgba(66, 131, 242, 0.7);
+  background-color: var(--app-a700, rgba(66, 131, 242, 0.7));
 }
 
 .slideshow-dark .slideshow--next:hover,
@@ -243,7 +243,7 @@
 
 .slideshow-app .slideshow--next:hover {
   color: white;
-  background-color: rgba(66, 131, 242, 0.9);
+  background-color: var(--app-a900, rgba(66, 131, 242, 0.9));
 }
 
 .slideshow--dots {
@@ -285,7 +285,7 @@
 }
 
 .slideshow-app .slideshow--dots > li {
-  background-color: rgba(66, 131, 242, 0.9);
+  background-color: var(--app-a900, rgba(66, 131, 242, 0.9));
 }
 
 .slideshow--filter {

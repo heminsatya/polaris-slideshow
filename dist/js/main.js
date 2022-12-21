@@ -50,7 +50,7 @@ class Animations extends _Helpers__WEBPACK_IMPORTED_MODULE_0__.Helpers {
     animation(selector, animation = "", clear = false) {
         let node = null;
         // Check the selectors
-        if (this.check(selector)['status']) {
+        if (this.exist(selector)['status']) {
             if (typeof (selector) === "string") {
                 node = document.querySelector(selector);
             }
@@ -59,7 +59,7 @@ class Animations extends _Helpers__WEBPACK_IMPORTED_MODULE_0__.Helpers {
             }
         }
         else {
-            throw this.check(selector)['message'];
+            throw this.exist(selector)['message'];
         }
         // Check animation
         if (animation == "") {
@@ -182,7 +182,7 @@ class Animations extends _Helpers__WEBPACK_IMPORTED_MODULE_0__.Helpers {
     animated(selector, mod = 'bottom') {
         let nodes = null;
         // Check the selectors
-        if (this.check(selector)['status']) {
+        if (this.exist(selector)['status']) {
             if (typeof (selector) === "string") {
                 nodes = document.querySelectorAll(selector);
             }
@@ -191,7 +191,7 @@ class Animations extends _Helpers__WEBPACK_IMPORTED_MODULE_0__.Helpers {
             }
         }
         else {
-            throw this.check(selector)['message'];
+            throw this.exist(selector)['message'];
         }
         nodes.forEach((node) => {
             let tolerance = node.dataset.tolerance;
@@ -232,7 +232,7 @@ class Animations extends _Helpers__WEBPACK_IMPORTED_MODULE_0__.Helpers {
     animating(selector, duration = 1000, count = Infinity) {
         let node = null;
         // Check the selectors
-        if (this.check(selector)['status']) {
+        if (this.exist(selector)['status']) {
             if (typeof (selector) === "string") {
                 node = document.querySelector(selector);
             }
@@ -241,7 +241,7 @@ class Animations extends _Helpers__WEBPACK_IMPORTED_MODULE_0__.Helpers {
             }
         }
         else {
-            throw this.check(selector)['message'];
+            throw this.exist(selector)['message'];
         }
         // Check element visibility
         if (this.visible(node, "both", 0)) {
@@ -269,7 +269,7 @@ class Animations extends _Helpers__WEBPACK_IMPORTED_MODULE_0__.Helpers {
         let selectors = null;
         let navigators = null;
         // Check the selectors
-        if (this.check(selector)['status']) {
+        if (this.exist(selector)['status']) {
             if (typeof (selector) === "string") {
                 selectors = document.querySelectorAll(selector);
             }
@@ -278,10 +278,10 @@ class Animations extends _Helpers__WEBPACK_IMPORTED_MODULE_0__.Helpers {
             }
         }
         else {
-            throw this.check(selector)['message'];
+            throw this.exist(selector)['message'];
         }
         // Check the navigators
-        if (this.check(navigator)['status']) {
+        if (this.exist(navigator)['status']) {
             if (typeof (navigator) === "string") {
                 navigators = document.querySelectorAll(navigator);
             }
@@ -290,7 +290,7 @@ class Animations extends _Helpers__WEBPACK_IMPORTED_MODULE_0__.Helpers {
             }
         }
         else {
-            throw this.check(navigator)['message'];
+            throw this.exist(navigator)['message'];
         }
         // Navigation links
         selectors.forEach((node) => {
@@ -448,7 +448,7 @@ class Helpers extends _Config__WEBPACK_IMPORTED_MODULE_0__.Config {
      *
      * @return {object}
      */
-    check(selector = null) {
+    exist(selector = null) {
         // Default variables
         let result = {};
         // Set the default result response
@@ -496,12 +496,12 @@ class Helpers extends _Config__WEBPACK_IMPORTED_MODULE_0__.Config {
         if (typeof (selector) !== "string") {
             throw `The selector must be of type "string".`;
         }
-        else if (this.check(selector)['status']) {
+        else if (this.exist(selector)['status']) {
             // Return the result
             return document.querySelector(selector);
         }
         else {
-            throw this.check(selector)['message'];
+            throw this.exist(selector)['message'];
         }
     }
     /**
@@ -516,12 +516,12 @@ class Helpers extends _Config__WEBPACK_IMPORTED_MODULE_0__.Config {
         if (typeof (selector) !== "string") {
             throw `The selector must be of type "string".`;
         }
-        else if (this.check(selector)['status']) {
+        else if (this.exist(selector)['status']) {
             // Return the result
             return document.querySelectorAll(selector);
         }
         else {
-            throw this.check(selector)['message'];
+            throw this.exist(selector)['message'];
         }
     }
     /**
@@ -539,7 +539,7 @@ class Helpers extends _Config__WEBPACK_IMPORTED_MODULE_0__.Config {
         let windowHeight = window.innerHeight;
         let viewHeight = Math.max(document.documentElement.clientHeight, windowHeight);
         // Check the selector
-        if (this.check(selector)['status']) {
+        if (this.exist(selector)['status']) {
             if (typeof (selector) === "string") {
                 rect = document.querySelector(selector);
                 rect = rect.getBoundingClientRect();
@@ -549,7 +549,7 @@ class Helpers extends _Config__WEBPACK_IMPORTED_MODULE_0__.Config {
             }
         }
         else {
-            throw this.check(selector)['message'];
+            throw this.exist(selector)['message'];
         }
         // Scroll top & bottom
         if (from == 'both') {
@@ -586,7 +586,7 @@ class Helpers extends _Config__WEBPACK_IMPORTED_MODULE_0__.Config {
             throw `The selector must be of type "string".`;
         }
         // Check the parent
-        if (this.check(parent)['status']) {
+        if (this.exist(parent)['status']) {
             if (typeof (parent) === "string") {
                 parentNode = document.querySelector(parent);
             }
@@ -595,7 +595,7 @@ class Helpers extends _Config__WEBPACK_IMPORTED_MODULE_0__.Config {
             }
         }
         else {
-            throw this.check(parent)['message'];
+            throw this.exist(parent)['message'];
         }
         // Create the node
         const node = document.createElement(selector);
@@ -643,7 +643,7 @@ class Helpers extends _Config__WEBPACK_IMPORTED_MODULE_0__.Config {
             throw `The selector must be of type "string".`;
         }
         // Check the parent
-        if (this.check(parent)['status']) {
+        if (this.exist(parent)['status']) {
             if (typeof (parent) === "string") {
                 parentNode = document.querySelector(parent);
             }
@@ -652,7 +652,7 @@ class Helpers extends _Config__WEBPACK_IMPORTED_MODULE_0__.Config {
             }
         }
         else {
-            throw this.check(parent)['message'];
+            throw this.exist(parent)['message'];
         }
         // Create the node
         const node = document.createElement(selector);
@@ -690,7 +690,7 @@ class Helpers extends _Config__WEBPACK_IMPORTED_MODULE_0__.Config {
     remove(selector) {
         let node = null;
         // Check the selectors
-        if (this.check(selector)['status']) {
+        if (this.exist(selector)['status']) {
             if (typeof (selector) === "string") {
                 node = document.querySelector(selector);
             }
@@ -699,7 +699,7 @@ class Helpers extends _Config__WEBPACK_IMPORTED_MODULE_0__.Config {
             }
         }
         else {
-            throw this.check(selector)['message'];
+            throw this.exist(selector)['message'];
         }
         // Remove the node
         node.remove();
@@ -805,7 +805,7 @@ class Helpers extends _Config__WEBPACK_IMPORTED_MODULE_0__.Config {
      *
      * @return {boolean}
      */
-    exist(file) {
+    fileExist(file) {
         // Create a new XML HTTP Request
         let xhr = new XMLHttpRequest();
         // Request the file
@@ -831,7 +831,7 @@ class Helpers extends _Config__WEBPACK_IMPORTED_MODULE_0__.Config {
         // Check strict mod
         if (strict) {
             // Check file existence
-            if (!this.exist(file)) {
+            if (!this.fileExist(file)) {
                 return false;
             }
         }
@@ -863,7 +863,7 @@ class Helpers extends _Config__WEBPACK_IMPORTED_MODULE_0__.Config {
         // Check strict mod
         if (strict) {
             // Check file existence
-            if (!this.exist(file)) {
+            if (!this.fileExist(file)) {
                 return false;
             }
         }
@@ -919,7 +919,7 @@ class Helpers extends _Config__WEBPACK_IMPORTED_MODULE_0__.Config {
     addClass(selector, cls) {
         let node = null;
         // Check the selector
-        if (this.check(selector)['status']) {
+        if (this.exist(selector)['status']) {
             if (typeof (selector) === "string") {
                 node = document.querySelector(selector);
             }
@@ -928,7 +928,7 @@ class Helpers extends _Config__WEBPACK_IMPORTED_MODULE_0__.Config {
             }
         }
         else {
-            throw this.check(selector)['message'];
+            throw this.exist(selector)['message'];
         }
         // Add the class
         if (!node.classList.contains(cls)) {
@@ -946,7 +946,7 @@ class Helpers extends _Config__WEBPACK_IMPORTED_MODULE_0__.Config {
     removeClass(selector, cls) {
         let node = null;
         // Check the selector
-        if (this.check(selector)['status']) {
+        if (this.exist(selector)['status']) {
             if (typeof (selector) === "string") {
                 node = document.querySelector(selector);
             }
@@ -955,7 +955,7 @@ class Helpers extends _Config__WEBPACK_IMPORTED_MODULE_0__.Config {
             }
         }
         else {
-            throw this.check(selector)['message'];
+            throw this.exist(selector)['message'];
         }
         // Remove the class
         if (node.classList.contains(cls)) {
@@ -966,15 +966,15 @@ class Helpers extends _Config__WEBPACK_IMPORTED_MODULE_0__.Config {
      * @desc Toggles an old class with a new class for a selector
      *
      * @param {string|object} selector -- The selector name (object)
-     * @param {string} clsOld          -- The old class name
-     * @param {string} clsNew          -- The new class name
+     * @param {string}        oldCls   -- The old class name
+     * @param {string}        newCls   -- The new class name
      *
      * @return {void}
      */
-    toggleClass(selector, clsOld, clsNew) {
+    toggleClass(selector, oldCls, newCls) {
         let node = null;
         // Check the selector
-        if (this.check(selector)['status']) {
+        if (this.exist(selector)['status']) {
             if (typeof (selector) === "string") {
                 node = document.querySelector(selector);
             }
@@ -983,15 +983,15 @@ class Helpers extends _Config__WEBPACK_IMPORTED_MODULE_0__.Config {
             }
         }
         else {
-            throw this.check(selector)['message'];
+            throw this.exist(selector)['message'];
         }
         // Remove the old class
-        if (node.classList.contains(clsOld)) {
-            node.classList.remove(clsOld);
+        if (node.classList.contains(oldCls)) {
+            node.classList.remove(oldCls);
         }
         // Add the new class
-        if (!node.classList.contains(clsNew)) {
-            node.classList.add(clsNew);
+        if (!node.classList.contains(newCls)) {
+            node.classList.add(newCls);
         }
     }
     /**
@@ -1005,7 +1005,7 @@ class Helpers extends _Config__WEBPACK_IMPORTED_MODULE_0__.Config {
     addClasses(selector, classList) {
         let node = null;
         // Check the selector
-        if (this.check(selector)['status']) {
+        if (this.exist(selector)['status']) {
             if (typeof (selector) === "string") {
                 node = document.querySelector(selector);
             }
@@ -1014,7 +1014,7 @@ class Helpers extends _Config__WEBPACK_IMPORTED_MODULE_0__.Config {
             }
         }
         else {
-            throw this.check(selector)['message'];
+            throw this.exist(selector)['message'];
         }
         // Loop classes
         classList.forEach((cls) => {
@@ -1071,6 +1071,45 @@ class Helpers extends _Config__WEBPACK_IMPORTED_MODULE_0__.Config {
         }
         // Return result
         return result;
+    }
+    /**
+     * @desc Checks if the browser is fullscreen
+     *
+     * @return {boolean}
+     */
+    isFullscreen() {
+        if (window.innerWidth == screen.width && window.innerHeight == screen.height) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+    /**
+     * @desc Request an element to be fullscreen
+     *
+     * @var {any} method -- The request method
+     *
+     * @return {void}
+     */
+    fullscreen(elem) {
+        if (!this.isFullscreen()) {
+            const method = elem.requestFullScreen || elem.webkitRequestFullScreen || elem.mozRequestFullScreen || elem.msRequestFullScreen;
+            return method.call(elem);
+        }
+    }
+    /**
+     * @desc Exits browser fullscreen
+     *
+     * @var {any} elem -- The document object
+     *
+     * @return {void}
+     */
+    exitFullscreen() {
+        const elem = document;
+        if (this.isFullscreen()) {
+            return elem.exitFullscreen() || elem.webkitExitFullscreen() || elem.mozCancelFullScreen() || elem.msExitFullscreen();
+        }
     }
 }
 //# sourceMappingURL=Helpers.js.map
@@ -1206,7 +1245,7 @@ class Slideshow extends polaris_core_dist_js_modules_Animations__WEBPACK_IMPORTE
             'overlaysPosition': null,
         };
         // Valid slideshow selector
-        if (this.check(slideshow)['status']) {
+        if (this.exist(slideshow)['status']) {
             // String slideshow selector
             if (typeof (slideshow) === "string") {
                 this.slideshow = document.querySelector(slideshow);
@@ -2329,7 +2368,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _modules_Slideshow__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./modules/Slideshow */ "./src/ts/modules/Slideshow.ts");
 /**
- * Polaris Slideshow Plugin v1.2.1
+ * Polaris Slideshow Plugin v1.2.2
  * MIT License github.com/heminsatya/polaris-plugins | © 2022 polarisui.com
 **/
 /**
