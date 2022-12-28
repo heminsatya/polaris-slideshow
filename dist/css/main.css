@@ -1,6 +1,6 @@
 @charset "UTF-8";
 /**
- * Polaris Slideshow Plugin v1.2.2
+ * Polaris Slideshow Plugin v1.2.3
  * MIT License github.com/heminsatya/polaris-plugins | © 2022 polarisui.com
 **/
 /* -------------------------------------------------- */
@@ -73,13 +73,13 @@
 
 .slideshow-dark .slideshow--caption,
 .doc-dark .slideshow--caption {
-  color: #F4F4F4;
+  color: var(--gray-100, #F4F4F4);
   background-color: rgba(0, 0, 0, 0.8);
 }
 
 .slideshow--caption,
 .slideshow-light .slideshow--caption {
-  color: #242424;
+  color: var(--gray-900, #242424);
   background-color: rgba(255, 255, 255, 0.9);
 }
 
@@ -132,13 +132,13 @@
 
 .slideshow-dark .slideshow--counter,
 .doc-dark .slideshow--counter {
-  color: #DBDBDB;
+  color: var(--gray-200, #DBDBDB);
   background-color: rgba(0, 0, 0, 0.5);
 }
 
 .slideshow--counter,
 .slideshow-light .slideshow--counter {
-  color: #3F3F3F;
+  color: var(--gray-800, #3F3F3F);
   background-color: rgba(255, 255, 255, 0.6);
 }
 
@@ -180,13 +180,13 @@
 
 .slideshow-dark .slideshow--prev,
 .doc-dark .slideshow--prev {
-  color: #DBDBDB;
+  color: var(--gray-200, #DBDBDB);
   background-color: rgba(0, 0, 0, 0.6);
 }
 
 .slideshow--prev,
 .slideshow-light .slideshow--prev {
-  color: #3F3F3F;
+  color: var(--gray-800, #3F3F3F);
   background-color: rgba(255, 255, 255, 0.7);
 }
 
@@ -197,13 +197,13 @@
 
 .slideshow-dark .slideshow--prev:hover,
 .doc-dark .slideshow--prev:hover {
-  color: #F4F4F4;
+  color: var(--gray-100, #F4F4F4);
   background-color: rgba(0, 0, 0, 0.8);
 }
 
 .slideshow--prev:hover,
 .slideshow-light .slideshow--prev:hover {
-  color: #242424;
+  color: var(--gray-900, #242424);
   background-color: rgba(255, 255, 255, 0.9);
 }
 
@@ -214,13 +214,13 @@
 
 .slideshow-dark .slideshow--next,
 .doc-dark .slideshow--next {
-  color: #DBDBDB;
+  color: var(--gray-200, #DBDBDB);
   background-color: rgba(0, 0, 0, 0.6);
 }
 
 .slideshow--next,
 .slideshow-light .slideshow--next {
-  color: #3F3F3F;
+  color: var(--gray-800, #3F3F3F);
   background-color: rgba(255, 255, 255, 0.7);
 }
 
@@ -231,13 +231,13 @@
 
 .slideshow-dark .slideshow--next:hover,
 .doc-dark .slideshow--next:hover {
-  color: #F4F4F4;
+  color: var(--gray-100, #F4F4F4);
   background-color: rgba(0, 0, 0, 0.8);
 }
 
 .slideshow--next:hover,
 .slideshow-light .slideshow--next:hover {
-  color: #242424;
+  color: var(--gray-900, #242424);
   background-color: rgba(255, 255, 255, 0.9);
 }
 
