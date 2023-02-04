@@ -83,11 +83,6 @@
   background-color: rgba(255, 255, 255, 0.9);
 }
 
-.slideshow-app .slideshow--caption {
-  color: white;
-  background-color: var(--app-a900, rgba(66, 131, 242, 0.9));
-}
-
 .slideshow--overlays {
   z-index: 3;
   position: absolute;
@@ -115,10 +110,6 @@
   background-color: #F4F4F4;
 }
 
-.slideshow-app .slideshow--progress {
-  background-color: var(--app, #4283F2);
-}
-
 .slideshow--counter {
   font-size: 0.875rem;
   padding: 0.25rem 0.5rem;
@@ -140,11 +131,6 @@
 .slideshow-light .slideshow--counter {
   color: var(--gray-800, #3F3F3F);
   background-color: rgba(255, 255, 255, 0.6);
-}
-
-.slideshow-app .slideshow--counter {
-  color: rgba(255, 255, 255, 0.9);
-  background-color: var(--app-a600, rgba(66, 131, 242, 0.6));
 }
 
 .slideshow--prev, .slideshow--next {
@@ -190,11 +176,6 @@
   background-color: rgba(255, 255, 255, 0.7);
 }
 
-.slideshow-app .slideshow--prev {
-  color: rgba(255, 255, 255, 0.9);
-  background-color: var(--app-a700, rgba(66, 131, 242, 0.7));
-}
-
 .slideshow-dark .slideshow--prev:hover,
 .doc-dark .slideshow--prev:hover {
   color: var(--gray-100, #F4F4F4);
@@ -205,11 +186,6 @@
 .slideshow-light .slideshow--prev:hover {
   color: var(--gray-900, #242424);
   background-color: rgba(255, 255, 255, 0.9);
-}
-
-.slideshow-app .slideshow--prev:hover {
-  color: white;
-  background-color: var(--app-a900, rgba(66, 131, 242, 0.9));
 }
 
 .slideshow-dark .slideshow--next,
@@ -224,11 +200,6 @@
   background-color: rgba(255, 255, 255, 0.7);
 }
 
-.slideshow-app .slideshow--next {
-  color: rgba(255, 255, 255, 0.9);
-  background-color: var(--app-a700, rgba(66, 131, 242, 0.7));
-}
-
 .slideshow-dark .slideshow--next:hover,
 .doc-dark .slideshow--next:hover {
   color: var(--gray-100, #F4F4F4);
@@ -239,11 +210,6 @@
 .slideshow-light .slideshow--next:hover {
   color: var(--gray-900, #242424);
   background-color: rgba(255, 255, 255, 0.9);
-}
-
-.slideshow-app .slideshow--next:hover {
-  color: white;
-  background-color: var(--app-a900, rgba(66, 131, 242, 0.9));
 }
 
 .slideshow--dots {
@@ -284,10 +250,6 @@
   background-color: rgba(255, 255, 255, 0.9);
 }
 
-.slideshow-app .slideshow--dots > li {
-  background-color: var(--app-a900, rgba(66, 131, 242, 0.9));
-}
-
 .slideshow--filter {
   position: absolute;
   top: 0;
@@ -295,16 +257,7 @@
   width: 100%;
   height: 100%;
   z-index: 2;
-}
-
-.doc-dark .slideshow--filter,
-.slideshow--filter.slideshow--filter-light {
-  background-color: rgba(255, 255, 255, 0.25);
-}
-
-.slideshow--filter,
-.slideshow--filter.slideshow--filter-dark {
-  background-color: rgba(0, 0, 0, 0.4);
+  background-color: rgba(0, 0, 0, 0.5);
 }
 
 .slideshow--caption:empty,

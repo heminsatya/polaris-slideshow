@@ -65,53 +65,53 @@ export class Slideshow extends Animations {
     private hasDots:           boolean = false;
     private width:             any     = 0;
     private height:            any     = 0;
-    private slideshowColor:    any     = 'auto';
-    private mediaFilter:       any     = null;
+    private slideshowSkin:     any     = 'auto';
+    private mediaFilter:       boolean = false;
     private mediaControls:     boolean = true;
     private mediaAutoplay:     boolean = false;
 
     // Slideshow options
     private options: any = {
         "mediaShrink":      this.mediaShrink,
-        'isAutoplay':       this.isAutoplay,
-        'hoverPause':       this.hoverPause,
-        'timeout':          this.timeout,
-        'hasProgress':      this.hasProgress,
-        'hasCounter':       this.hasCounter,
-        'hasControls':      this.hasControls,
-        'hasDots':          this.hasDots,
-        'round':            false,
-        'width':            null,
-        'height':           null,
-        'color':            this.slideshowColor,
-        'mediaControls':    this.mediaControls,
-        'mediaAutoplay':    this.mediaAutoplay,
-        'mediaFilter':      this.mediaFilter,
-        'phoneHeight':      null,
-        'tabletHeight':     null,
-        'desktopHeight':    null,
-        'mediaEnter':       null,
-        'mediaExit':        null,
-        'mediaEnterPrev':   null,
-        'mediaExitPrev':    null,
-        'mediaEnterNext':   null,
-        'mediaExitNext':    null,
-        'overlayEnter':     null,
-        'overlayExit':      null,
-        'overlayEnterPrev': null,
-        'overlayExitPrev':  null,
-        'overlayEnterNext': null,
-        'overlayExitNext':  null,
-        'captionEnter':     null,
-        'captionExit':      null,
-        'captionEnterPrev': null,
-        'captionExitPrev':  null,
-        'captionEnterNext': null,
-        'captionExitNext':  null,
-        'counterPosition':  null,
-        'dotsPosition':     null,
-        'captionsPosition': null,
-        'overlaysPosition': null,
+        "isAutoplay":       this.isAutoplay,
+        "hoverPause":       this.hoverPause,
+        "timeout":          this.timeout,
+        "hasProgress":      this.hasProgress,
+        "hasCounter":       this.hasCounter,
+        "hasControls":      this.hasControls,
+        "hasDots":          this.hasDots,
+        "round":            false,
+        "width":            null,
+        "height":           null,
+        "skin":             this.slideshowSkin,
+        "mediaControls":    this.mediaControls,
+        "mediaAutoplay":    this.mediaAutoplay,
+        "mediaFilter":      this.mediaFilter,
+        "phoneHeight":      null,
+        "tabletHeight":     null,
+        "desktopHeight":    null,
+        "mediaEnter":       null,
+        "mediaExit":        null,
+        "mediaEnterPrev":   null,
+        "mediaExitPrev":    null,
+        "mediaEnterNext":   null,
+        "mediaExitNext":    null,
+        "overlayEnter":     null,
+        "overlayExit":      null,
+        "overlayEnterPrev": null,
+        "overlayExitPrev":  null,
+        "overlayEnterNext": null,
+        "overlayExitNext":  null,
+        "captionEnter":     null,
+        "captionExit":      null,
+        "captionEnterPrev": null,
+        "captionExitPrev":  null,
+        "captionEnterNext": null,
+        "captionExitNext":  null,
+        "counterPosition":  null,
+        "dotsPosition":     null,
+        "captionsPosition": null,
+        "overlaysPosition": null,
     }
 
 
@@ -162,7 +162,7 @@ export class Slideshow extends Animations {
             if (!('hasDots' in this.options))       this.options['hasDots']         = this.hasDots;
             if (!('mediaControls' in this.options)) this.options['mediaControls']   = this.mediaControls;
             if (!('mediaAutoplay' in this.options)) this.options['mediaAutoplay']   = this.mediaAutoplay;
-            if (!('color' in this.options))         this.options['color']           = this.slideshowColor
+            if (!('skin' in this.options))          this.options['skin']            = this.slideshowSkin;
             if (!('mediaFilter' in this.options))   this.options['mediaFilter']     = this.mediaFilter;
     
             // Start the slideshow
@@ -598,10 +598,10 @@ export class Slideshow extends Animations {
 
 
         /**
-         *  Set slideshow color
+         *  Set slideshow skin
          */
-        if (this.options['color'] && this.options['color'] != 'auto') {
-            this.addClass(this.slideshow, this.nameSlideshow + this.modSep + this.options['color']);
+        if (this.options['skin'] && this.options['skin'] != 'auto') {
+            this.addClass(this.slideshow, this.nameSlideshow + this.modSep + this.options['skin']);
         }
 
         
@@ -609,14 +609,11 @@ export class Slideshow extends Animations {
          *  Set slideshow filter
          */
          if (this.options['mediaFilter']) {
-            let filterCls : string[];
+            // Produce the filter class
+            const filterCls = this.nameSlideshow + this.chiSep + this.nameSlideshowFilter;
 
-            // Produce the filter class list
-            if (this.options['mediaFilter'] == 'auto') filterCls = [this.nameSlideshow + this.chiSep + this.nameSlideshowFilter];
-            else filterCls = [this.nameSlideshow + this.chiSep + this.nameSlideshowFilter, this.nameSlideshow + this.chiSep + this.nameSlideshowFilter + this.modSep + this.options['mediaFilter']];
-        
             // Append the filter
-            this.append('div', this.slideshow, '', filterCls);
+            this.append('div', this.slideshow, '', [filterCls]);
         }
 
 
@@ -1041,28 +1038,27 @@ export class Slideshow extends Animations {
     private setSlide(index:number, mode:null|string = null): void {
         // Check sliding
         if (!this.sliding) {
-            // Reset the timer
-            this.remainingTime = 0;
-
             // Clear the timer interval
             if (this.timerInterval) clearInterval(this.timerInterval);
 
-            // Reset the progress
-            if (this.options['hasProgress']) this.slideshowProgress.style.width = '0%';
-
-            // Start sliding
-            this.sliding = true;
-
             // Stop the slide interval
             if (this.slideInterval) clearInterval(this.slideInterval);
-    
-            // Rest the progressbar
-            if (this.options['hasProgress']) this.slideshowProgress.style.width = '0%'
+
+            // Reset the progressbar
+            if (this.options['hasProgress']) this.slideshowProgress.style.width = '0%';
+
+            // Reset the timer
+            this.remainingTime = 0;
+            
+            // Start sliding
+            this.sliding = true;
     
             // Default vaiables
             let slide:any, media:any, overlays:any[], captions:any[];
             let mediaAnimation:string, overlayAnimation:string, captionAnimation:string;
             let slideMode:string;
+            let duration:number;
+            let itemTimout:any;
     
             // Set mode
             if (mode)                           slideMode = mode;
@@ -1092,6 +1088,40 @@ export class Slideshow extends Animations {
                     // Remove active class
                     this.removeClass(this.activeDot, this.nameActive);
                 }
+                
+                // Hide captions
+                if (captions.length) {
+                    captions.forEach((caption:any) => {
+                        // Find animation
+                        if (caption.dataset.exit)                                            captionAnimation = caption.dataset.exit;
+                        else if (caption.dataset.exitPrev && slideMode == 'previous')        captionAnimation = caption.dataset.exitPrev;
+                        else if (caption.dataset.exitNext && slideMode == 'next')            captionAnimation = caption.dataset.exitNext;
+                        else if (this.options['captionExit'])                                captionAnimation = this.options['captionExit'];
+                        else if (this.options['captionExitPrev'] && slideMode == 'previous') captionAnimation = this.options['captionExitPrev'];
+                        else if (this.options['captionExitNext'] && slideMode == 'next')     captionAnimation = this.options['captionExitNext'];
+                        else                                                                 captionAnimation = this.animationExit;
+        
+                        // Set animation
+                        this.animation(caption, captionAnimation);
+                    });
+                }
+        
+                // Hide overlays
+                if (overlays.length) {
+                    overlays.forEach((overlay:any) => {
+                        // Find animation
+                        if (overlay.dataset.exit)                                            overlayAnimation = overlay.dataset.exit;
+                        else if (overlay.dataset.exitPrev && slideMode == 'previous')        overlayAnimation = overlay.dataset.exitPrev;
+                        else if (overlay.dataset.exitNext && slideMode == 'next')            overlayAnimation = overlay.dataset.exitNext;
+                        else if (this.options['overlayExit'])                                overlayAnimation = this.options['overlayExit'];
+                        else if (this.options['overlayExitPrev'] && slideMode == 'previous') overlayAnimation = this.options['overlayExitPrev'];
+                        else if (this.options['overlayExitNext'] && slideMode == 'next')     overlayAnimation = this.options['overlayExitNext'];
+                        else                                                                 overlayAnimation = this.animationExit;
+        
+                        // Set animation
+                        this.animation(overlay, overlayAnimation);
+                    });
+                }
         
                 // Hide media
                 if (media) {
@@ -1113,40 +1143,6 @@ export class Slideshow extends Animations {
         
                     // Set animation
                     this.animation(media, mediaAnimation);
-                }
-        
-                // Hide overlays
-                if (overlays.length) {
-                    overlays.forEach((overlay:any) => {
-                        // Find animation
-                        if (overlay.dataset.exit)                                            overlayAnimation = overlay.dataset.exit;
-                        else if (overlay.dataset.exitPrev && slideMode == 'previous')        overlayAnimation = overlay.dataset.exitPrev;
-                        else if (overlay.dataset.exitNext && slideMode == 'next')            overlayAnimation = overlay.dataset.exitNext;
-                        else if (this.options['overlayExit'])                                overlayAnimation = this.options['overlayExit'];
-                        else if (this.options['overlayExitPrev'] && slideMode == 'previous') overlayAnimation = this.options['overlayExitPrev'];
-                        else if (this.options['overlayExitNext'] && slideMode == 'next')     overlayAnimation = this.options['overlayExitNext'];
-                        else                                                                 overlayAnimation = this.animationExit;
-        
-                        // Set animation
-                        this.animation(overlay, overlayAnimation);
-                    });
-                }
-                
-                // Hide captions
-                if (captions.length) {
-                    captions.forEach((caption:any) => {
-                        // Find animation
-                        if (caption.dataset.exit)                                            captionAnimation = caption.dataset.exit;
-                        else if (caption.dataset.exitPrev && slideMode == 'previous')        captionAnimation = caption.dataset.exitPrev;
-                        else if (caption.dataset.exitNext && slideMode == 'next')            captionAnimation = caption.dataset.exitNext;
-                        else if (this.options['captionExit'])                                captionAnimation = this.options['captionExit'];
-                        else if (this.options['captionExitPrev'] && slideMode == 'previous') captionAnimation = this.options['captionExitPrev'];
-                        else if (this.options['captionExitNext'] && slideMode == 'next')     captionAnimation = this.options['captionExitNext'];
-                        else                                                                 captionAnimation = this.animationExit;
-        
-                        // Set animation
-                        this.animation(caption, captionAnimation);
-                    });
                 }
             }
     
@@ -1223,40 +1219,62 @@ export class Slideshow extends Animations {
                     this.sliding = false;
                 });
             }
-    
-            // Show overlays
-            if (overlays.length) {
-                overlays.forEach((overlay:any) => {
-                    // Find animation
-                    if (overlay.dataset.enter)                                            overlayAnimation = overlay.dataset.enter;
-                    else if (overlay.dataset.enterPrev && slideMode == 'previous')        overlayAnimation = overlay.dataset.enterPrev;
-                    else if (overlay.dataset.enterNext && slideMode == 'next')            overlayAnimation = overlay.dataset.enterNext;
-                    else if (this.options['overlayEnter'])                                overlayAnimation = this.options['overlayEnter'];
-                    else if (this.options['overlayEnterPrev'] && slideMode == 'previous') overlayAnimation = this.options['overlayEnterPrev'];
-                    else if (this.options['overlayEnterNext'] && slideMode == 'next')     overlayAnimation = this.options['overlayEnterNext'];
-                    else                                                                  overlayAnimation = this.animationEnter;
-    
-                    // Set animation
-                    this.animation(overlay, overlayAnimation);
-                });
+
+            // Find media duration
+            if (media.dataset.duration) {
+                // Miliseconds
+                if (media.dataset.duration.search("ms")) {
+                    duration = parseInt(media.dataset.duration);
+                }
+                // Seconds
+                else {
+                    duration = parseInt(media.dataset.duration) * 1000;
+                }
             }
-            
-            // Show captions
-            if (captions.length) {
-                captions.forEach((caption:any) => {
-                    // Find animation
-                    if (caption.dataset.enter)                                            captionAnimation = caption.dataset.enter;
-                    else if (caption.dataset.enterPrev && slideMode == 'previous')        captionAnimation = caption.dataset.enterPrev;
-                    else if (caption.dataset.enterNext && slideMode == 'next')            captionAnimation = caption.dataset.enterNext;
-                    else if (this.options['captionEnter'])                                captionAnimation = this.options['captionEnter'];
-                    else if (this.options['captionEnterPrev'] && slideMode == 'previous') captionAnimation = this.options['captionEnterPrev'];
-                    else if (this.options['captionEnterNext'] && slideMode == 'next')     captionAnimation = this.options['captionEnterNext'];
-                    else                                                                  captionAnimation = this.animationEnter;
-    
-                    // Set animation
-                    this.animation(caption, captionAnimation);
-                });
+            else {
+                duration = 1000;
             }
+
+            // Refine duration
+            duration /= 2;
+
+            // Show slide items
+            clearTimeout(itemTimout);
+            itemTimout = setTimeout(() => {
+                // Show overlays
+                if (overlays.length) {
+                    overlays.forEach((overlay:any) => {
+                        // Find animation
+                        if (overlay.dataset.enter)                                            overlayAnimation = overlay.dataset.enter;
+                        else if (overlay.dataset.enterPrev && slideMode == 'previous')        overlayAnimation = overlay.dataset.enterPrev;
+                        else if (overlay.dataset.enterNext && slideMode == 'next')            overlayAnimation = overlay.dataset.enterNext;
+                        else if (this.options['overlayEnter'])                                overlayAnimation = this.options['overlayEnter'];
+                        else if (this.options['overlayEnterPrev'] && slideMode == 'previous') overlayAnimation = this.options['overlayEnterPrev'];
+                        else if (this.options['overlayEnterNext'] && slideMode == 'next')     overlayAnimation = this.options['overlayEnterNext'];
+                        else                                                                  overlayAnimation = this.animationEnter;
+        
+                        // Set animation
+                        this.animation(overlay, overlayAnimation);
+                    });
+                }
+                
+                // Show captions
+                if (captions.length) {
+                    captions.forEach((caption:any) => {
+                        // Find animation
+                        if (caption.dataset.enter)                                            captionAnimation = caption.dataset.enter;
+                        else if (caption.dataset.enterPrev && slideMode == 'previous')        captionAnimation = caption.dataset.enterPrev;
+                        else if (caption.dataset.enterNext && slideMode == 'next')            captionAnimation = caption.dataset.enterNext;
+                        else if (this.options['captionEnter'])                                captionAnimation = this.options['captionEnter'];
+                        else if (this.options['captionEnterPrev'] && slideMode == 'previous') captionAnimation = this.options['captionEnterPrev'];
+                        else if (this.options['captionEnterNext'] && slideMode == 'next')     captionAnimation = this.options['captionEnterNext'];
+                        else                                                                  captionAnimation = this.animationEnter;
+        
+                        // Set animation
+                        this.animation(caption, captionAnimation);
+                    });
+                }
+            }, duration);
     
             // Set counter
             if (this.options['hasCounter']) this.slideshowCounter.innerHTML = `${Number(slide.dataset.index) + 1}/${this.itemsCount}`;

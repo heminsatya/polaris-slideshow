@@ -1,5 +1,5 @@
 /**
- * Polaris Slideshow Plugin v1.2.3
+ * Polaris Slideshow Plugin v1.3.0
  * MIT License github.com/heminsatya/polaris-plugins | © 2022 polarisui.com
 **/
 // -------------------------------------------------- //
@@ -91,7 +91,6 @@ $name-active-dot: '.' + $name-slideshow + $chi + $name-slideshow-dots + ' > li.'
 
 // Filter
 @include child-styles($filter-styles, $name-slideshow, $name-slideshow-filter);
-@include modifier-colors($filter-colors, $name-slideshow + $chi + $name-slideshow-filter, true);
 
 // Empty styles
 .#{$name-slideshow + $chi + $name-slideshow-caption}:empty,

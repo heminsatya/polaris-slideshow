@@ -95,10 +95,6 @@ $caption-colors: (
     "dark": (
         color:            color(gray-100),
         background-color: colora('black', 0.8)
-    ),
-    "app": (
-        color:            white,
-        background-color: var(--app-a900, colora(app, 0.9))
     )
 ) !default;
 
@@ -135,9 +131,6 @@ $progress-colors: (
     ),
     "dark": (
         background-color: color('dark')
-    ),
-    "app": (
-        background-color: color(app)
     )
 ) !default;
 
@@ -168,10 +161,6 @@ $counter-colors: (
     "dark": (
         color:            color(gray-200),
         background-color: colora('black', 0.5)
-    ),
-    "app": (
-        color:            colora('white', 0.9),
-        background-color: var(--app-a600, colora(app, 0.6))
     )
 ) !default;
 
@@ -229,10 +218,6 @@ $controls-colors: (
     "dark": (
         color:            color('gray-200'),
         background-color: colora('black', 0.6)
-    ),
-    "app": (
-        color:            colora('white', 0.9),
-        background-color: var(--app-a700, colora(app, 0.7))
     )
 ) !default;
 
@@ -244,10 +229,6 @@ $controls-colors-hover: (
     "dark": (
         color:            color('gray-100'),
         background-color: colora('black', 0.8)
-    ),
-    "app": (
-        color:            white,
-        background-color: var(--app-a900, colora(app, 0.9))
     )
 ) !default;
 
@@ -294,9 +275,6 @@ $dots-li-colors: (
     ),
     "dark": (
         background-color: colora('black', 0.8)
-    ),
-    "app": (
-        background-color: var(--app-a900, colora(app, 0.9))
     )
 ) !default;
 
@@ -308,17 +286,10 @@ $filter-styles: (
     width:    100%,
     height:   100%,
     z-index:  2,
+    background-color: colora('black', 0.5)
 ) !default;
 
-$filter-colors: (
-    "light": (
-        background-color: colora('white', 0.25)
-    ),
-    "dark": (
-        background-color: colora('black', 0.4)
-    )
-) !default;
-
+// Roundness
 $slideshow-radius: 0.5rem !default;
 $slideshow-media-radius:    0.5rem !default;
 $slideshow-caption-radius:  0.5rem !default;

@@ -54,7 +54,7 @@ export declare class Slideshow extends Animations {
     private hasDots;
     private width;
     private height;
-    private slideshowColor;
+    private slideshowSkin;
     private mediaFilter;
     private mediaControls;
     private mediaAutoplay;
