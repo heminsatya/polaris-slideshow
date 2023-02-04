@@ -427,6 +427,7 @@ export class Slideshow extends Animations {
      * @return {void|boolean}
      */
     setOptions() {
+        var _a;
         /**
          *  Single & Multiple slide
          */
@@ -543,7 +544,30 @@ export class Slideshow extends Animations {
         /**
          *  Set slideshow skin
          */
-        if (this.options['skin'] && this.options['skin'] != 'auto') {
+        // Reverse colors
+        if (this.options['skin'] == 'reverse') {
+            // Check document color
+            if ((_a = document.querySelector('body')) === null || _a === void 0 ? void 0 : _a.classList.contains(`${this.nameDoc + this.modSep + this.nameLight}`)) {
+                this.addClass(this.slideshow, this.nameSlideshow + this.modSep + this.nameDark);
+            }
+            else {
+                this.addClass(this.slideshow, this.nameSlideshow + this.modSep + this.nameLight);
+            }
+            // On class change
+            this.onClassChange(document.querySelector('body'), (node) => {
+                // Check document color
+                if (node.classList.contains(`${this.nameDoc + this.modSep + this.nameLight}`)) {
+                    this.removeClass(this.slideshow, this.nameSlideshow + this.modSep + this.nameLight);
+                    this.addClass(this.slideshow, this.nameSlideshow + this.modSep + this.nameDark);
+                }
+                else {
+                    this.removeClass(this.slideshow, this.nameSlideshow + this.modSep + this.nameDark);
+                    this.addClass(this.slideshow, this.nameSlideshow + this.modSep + this.nameLight);
+                }
+            });
+        }
+        // Normal colors
+        else if (this.options['skin'] != 'auto') {
             this.addClass(this.slideshow, this.nameSlideshow + this.modSep + this.options['skin']);
         }
         /**

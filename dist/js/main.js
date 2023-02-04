@@ -1111,6 +1111,27 @@ class Helpers extends _Config__WEBPACK_IMPORTED_MODULE_0__.Config {
             return elem.exitFullscreen() || elem.webkitExitFullscreen() || elem.mozCancelFullScreen() || elem.msExitFullscreen();
         }
     }
+    /**
+     * @desc Calls a function on class change for an elemnent
+     *
+     * @param {any}      elem -- The element to listen
+     * @param {Function} fn   -- The callback function
+     *
+     * @var {object} listener -- The event listener
+     *
+     * @return {void}
+     */
+    onClassChange(elem, fn) {
+        const listener = new MutationObserver((mutations) => {
+            mutations.forEach((mutation) => {
+                if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
+                    fn(mutation.target);
+                }
+            });
+        });
+        listener.observe(elem, { attributes: true });
+        return listener.disconnect;
+    }
 }
 //# sourceMappingURL=Helpers.js.map
 
@@ -1556,6 +1577,7 @@ class Slideshow extends polaris_core_dist_js_modules_Animations__WEBPACK_IMPORTE
      * @return {void|boolean}
      */
     setOptions() {
+        var _a;
         /**
          *  Single & Multiple slide
          */
@@ -1672,7 +1694,30 @@ class Slideshow extends polaris_core_dist_js_modules_Animations__WEBPACK_IMPORTE
         /**
          *  Set slideshow skin
          */
-        if (this.options['skin'] && this.options['skin'] != 'auto') {
+        // Reverse colors
+        if (this.options['skin'] == 'reverse') {
+            // Check document color
+            if ((_a = document.querySelector('body')) === null || _a === void 0 ? void 0 : _a.classList.contains(`${this.nameDoc + this.modSep + this.nameLight}`)) {
+                this.addClass(this.slideshow, this.nameSlideshow + this.modSep + this.nameDark);
+            }
+            else {
+                this.addClass(this.slideshow, this.nameSlideshow + this.modSep + this.nameLight);
+            }
+            // On class change
+            this.onClassChange(document.querySelector('body'), (node) => {
+                // Check document color
+                if (node.classList.contains(`${this.nameDoc + this.modSep + this.nameLight}`)) {
+                    this.removeClass(this.slideshow, this.nameSlideshow + this.modSep + this.nameLight);
+                    this.addClass(this.slideshow, this.nameSlideshow + this.modSep + this.nameDark);
+                }
+                else {
+                    this.removeClass(this.slideshow, this.nameSlideshow + this.modSep + this.nameDark);
+                    this.addClass(this.slideshow, this.nameSlideshow + this.modSep + this.nameLight);
+                }
+            });
+        }
+        // Normal colors
+        else if (this.options['skin'] != 'auto') {
             this.addClass(this.slideshow, this.nameSlideshow + this.modSep + this.options['skin']);
         }
         /**
@@ -2383,7 +2428,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _modules_Slideshow__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./modules/Slideshow */ "./src/ts/modules/Slideshow.ts");
 /**
- * Polaris Slideshow Plugin v1.2.3
+ * Polaris Slideshow Plugin v1.4.0
  * MIT License github.com/heminsatya/polaris-plugins | © 2022 polarisui.com
 **/
 /**
