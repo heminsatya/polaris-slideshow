@@ -1316,6 +1316,13 @@ class Slideshow extends polaris_core_dist_js_modules_Animations__WEBPACK_IMPORTE
                 this.options['skin'] = this.slideshowSkin;
             if (!('mediaFilter' in this.options))
                 this.options['mediaFilter'] = this.mediaFilter;
+            // Refine ratio
+            if (this.options['syncRatio'] < 0) {
+                this.options['syncRatio'] = 0;
+            }
+            else if (this.options['syncRatio'] > 1) {
+                this.options['syncRatio'] = 1;
+            }
             // Start the slideshow
             this.start();
         }
@@ -2432,7 +2439,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _modules_Slideshow__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./modules/Slideshow */ "./src/ts/modules/Slideshow.ts");
 /**
- * Polaris Slideshow Plugin v1.4.1
+ * Polaris Slideshow Plugin v1.4.2
  * MIT License github.com/heminsatya/polaris-plugins | © 2022 polarisui.com
 **/
 /**

@@ -167,6 +167,14 @@ export class Slideshow extends Animations {
             if (!('syncRatio' in this.options))     this.options['syncRatio']       = this.syncRatio;
             if (!('skin' in this.options))          this.options['skin']            = this.slideshowSkin;
             if (!('mediaFilter' in this.options))   this.options['mediaFilter']     = this.mediaFilter;
+
+            // Refine ratio
+            if (this.options['syncRatio'] < 0) {
+                this.options['syncRatio'] = 0;
+            }
+            else if (this.options['syncRatio'] > 1) {
+                this.options['syncRatio'] = 1;
+            }
     
             // Start the slideshow
             this.start();
