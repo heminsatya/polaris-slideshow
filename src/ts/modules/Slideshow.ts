@@ -69,6 +69,7 @@ export class Slideshow extends Animations {
     private mediaFilter:       boolean = false;
     private mediaControls:     boolean = true;
     private mediaAutoplay:     boolean = false;
+    private syncRatio:         number  = 0.5;
 
     // Slideshow options
     private options: any = {
@@ -86,6 +87,7 @@ export class Slideshow extends Animations {
         "skin":             this.slideshowSkin,
         "mediaControls":    this.mediaControls,
         "mediaAutoplay":    this.mediaAutoplay,
+        "syncRatio":        this.syncRatio,
         "mediaFilter":      this.mediaFilter,
         "phoneHeight":      null,
         "tabletHeight":     null,
@@ -162,6 +164,7 @@ export class Slideshow extends Animations {
             if (!('hasDots' in this.options))       this.options['hasDots']         = this.hasDots;
             if (!('mediaControls' in this.options)) this.options['mediaControls']   = this.mediaControls;
             if (!('mediaAutoplay' in this.options)) this.options['mediaAutoplay']   = this.mediaAutoplay;
+            if (!('syncRatio' in this.options))     this.options['syncRatio']       = this.syncRatio;
             if (!('skin' in this.options))          this.options['skin']            = this.slideshowSkin;
             if (!('mediaFilter' in this.options))   this.options['mediaFilter']     = this.mediaFilter;
     
@@ -1081,7 +1084,7 @@ export class Slideshow extends Animations {
             let slide:any, media:any, overlays:any[], captions:any[];
             let mediaAnimation:string, overlayAnimation:string, captionAnimation:string;
             let slideMode:string;
-            let duration:number;
+            let ratio:number;
             let itemTimout:any;
     
             // Set mode
@@ -1244,23 +1247,23 @@ export class Slideshow extends Animations {
                 });
             }
 
-            // Find media duration
+            // Synchronicity ratio
             if (media.dataset.duration) {
                 // Miliseconds
                 if (media.dataset.duration.search("ms")) {
-                    duration = parseInt(media.dataset.duration);
+                    ratio = parseInt(media.dataset.duration);
                 }
                 // Seconds
                 else {
-                    duration = parseInt(media.dataset.duration) * 1000;
+                    ratio = parseInt(media.dataset.duration) * 1000;
                 }
             }
             else {
-                duration = 1000;
+                ratio = 1000;
             }
 
-            // Refine duration
-            duration /= 2;
+            // Refine ratio
+            ratio *= this.options['syncRatio'];
 
             // Show slide items
             clearTimeout(itemTimout);
@@ -1298,7 +1301,7 @@ export class Slideshow extends Animations {
                         this.animation(caption, captionAnimation);
                     });
                 }
-            }, duration);
+            }, ratio);
     
             // Set counter
             if (this.options['hasCounter']) this.slideshowCounter.innerHTML = `${Number(slide.dataset.index) + 1}/${this.itemsCount}`;

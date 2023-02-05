@@ -58,6 +58,7 @@ export declare class Slideshow extends Animations {
     private mediaFilter;
     private mediaControls;
     private mediaAutoplay;
+    private syncRatio;
     private options;
     /**
      * @desc Constructor method
