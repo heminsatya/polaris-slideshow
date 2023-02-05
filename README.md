@@ -2,7 +2,7 @@
 
 In addition to the built-in core colors comes with [Polaris framework](https://github.com/heminsatya/polaris-core), you can also use a set of flat and beautiful colors.
 
-Usings Polaris Slideshow Plugin, you can easily create responsive JavaScript slideshow for HTML elements.
+Usings Polaris Slideshow Plugin, you can easily create responsive JavaScript slideshows for HTML elements.
 
 
 ## Documentation

@@ -1,5 +1,5 @@
 /**
- * Polaris Slideshow Plugin v1.4.4 
+ * Polaris Slideshow Plugin v1.4.4
  * MIT License github.com/heminsatya/polaris-plugins | © 2022 polarisui.com
 **/
 /**
