@@ -1,7 +1,7 @@
 {
   "name": "polaris-slideshow",
   "version": "1.4.4",
-  "description": "Polaris Slideshow Plugin for Polaris Framework. A responsive JavaScript Slideshow for HTML elements.",
+  "description": "Polaris Slideshow Plugin for Polaris Framework. A responsive JavaScript slideshow for HTML elements.",
   "author": "Hemin Satya",
   "license": "MIT",
   "main": "index.js",
