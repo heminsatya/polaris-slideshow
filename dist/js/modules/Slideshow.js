@@ -166,6 +166,10 @@ export class Slideshow extends Animations {
                 this.options['skin'] = this.slideshowSkin;
             if (!('mediaFilter' in this.options))
                 this.options['mediaFilter'] = this.mediaFilter;
+            // Final check filter
+            if (this.options['mediaFilter']) {
+                this.options['skin'] = this.nameLight;
+            }
             // Refine ratio
             if (this.options['syncRatio'] < 0) {
                 this.options['syncRatio'] = 0;
