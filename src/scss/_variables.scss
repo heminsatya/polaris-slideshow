@@ -94,7 +94,7 @@ $caption-colors: (
     ),
     "dark": (
         color:            color(gray-100),
-        background-color: colora('black', 0.7)
+        background-color: colora('black', 0.75)
     )
 ) !default;
 
@@ -160,7 +160,7 @@ $counter-colors: (
     ),
     "dark": (
         color:            color(gray-200),
-        background-color: colora('black', 0.4)
+        background-color: colora('black', 0.45)
     )
 ) !default;
 
@@ -217,7 +217,7 @@ $controls-colors: (
     ),
     "dark": (
         color:            color('gray-200'),
-        background-color: colora('black', 0.5)
+        background-color: colora('black', 0.55)
     )
 ) !default;
 
@@ -228,7 +228,7 @@ $controls-colors-hover: (
     ),
     "dark": (
         color:            color('gray-100'),
-        background-color: colora('black', 0.7)
+        background-color: colora('black', 0.75)
     )
 ) !default;
 
@@ -274,7 +274,7 @@ $dots-li-colors: (
         background-color: colora('white', 0.9)
     ),
     "dark": (
-        background-color: colora('black', 0.7)
+        background-color: colora('black', 0.75)
     )
 ) !default;
 
