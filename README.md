@@ -1,4 +1,4 @@
-# Polaris Slideshow Plugin (v1.4.3)
+# Polaris Slideshow Plugin (v1.4.4)
 
 In addition to the built-in core colors comes with [Polaris framework](https://github.com/heminsatya/polaris-core), you can also use a set of flat and beautiful colors.
 

@@ -1,6 +1,6 @@
 @charset "UTF-8";
 /**
- * Polaris Slideshow Plugin v1.4.3
+ * Polaris Slideshow Plugin v1.4.4
  * MIT License github.com/heminsatya/polaris-plugins | © 2022 polarisui.com
 **/
 /* -------------------------------------------------- */
@@ -74,7 +74,7 @@
 .slideshow-dark .slideshow--caption,
 .doc-dark .slideshow--caption {
   color: var(--gray-100, #F4F4F4);
-  background-color: rgba(0, 0, 0, 0.8);
+  background-color: rgba(0, 0, 0, 0.7);
 }
 
 .slideshow--caption,
@@ -124,7 +124,7 @@
 .slideshow-dark .slideshow--counter,
 .doc-dark .slideshow--counter {
   color: var(--gray-200, #DBDBDB);
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.4);
 }
 
 .slideshow--counter,
@@ -167,7 +167,7 @@
 .slideshow-dark .slideshow--prev,
 .doc-dark .slideshow--prev {
   color: var(--gray-200, #DBDBDB);
-  background-color: rgba(0, 0, 0, 0.6);
+  background-color: rgba(0, 0, 0, 0.5);
 }
 
 .slideshow--prev,
@@ -179,7 +179,7 @@
 .slideshow-dark .slideshow--prev:hover,
 .doc-dark .slideshow--prev:hover {
   color: var(--gray-100, #F4F4F4);
-  background-color: rgba(0, 0, 0, 0.8);
+  background-color: rgba(0, 0, 0, 0.7);
 }
 
 .slideshow--prev:hover,
@@ -191,7 +191,7 @@
 .slideshow-dark .slideshow--next,
 .doc-dark .slideshow--next {
   color: var(--gray-200, #DBDBDB);
-  background-color: rgba(0, 0, 0, 0.6);
+  background-color: rgba(0, 0, 0, 0.5);
 }
 
 .slideshow--next,
@@ -203,7 +203,7 @@
 .slideshow-dark .slideshow--next:hover,
 .doc-dark .slideshow--next:hover {
   color: var(--gray-100, #F4F4F4);
-  background-color: rgba(0, 0, 0, 0.8);
+  background-color: rgba(0, 0, 0, 0.7);
 }
 
 .slideshow--next:hover,
@@ -242,7 +242,7 @@
 
 .slideshow-dark .slideshow--dots > li,
 .doc-dark .slideshow--dots > li {
-  background-color: rgba(0, 0, 0, 0.8);
+  background-color: rgba(0, 0, 0, 0.7);
 }
 
 .slideshow--dots > li,
