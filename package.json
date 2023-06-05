@@ -1,6 +1,6 @@
 {
   "name": "polaris-slideshow",
-  "version": "1.4.7",
+  "version": "1.5.0",
   "description": "Polaris Slideshow Plugin for Polaris Framework. A responsive JavaScript slideshow for HTML elements.",
   "author": "Hemin Satya",
   "license": "MIT",
@@ -32,8 +32,8 @@
     "url": "https://github.com/heminsatya/polaris-slideshow/issues"
   },
   "devDependencies": {
-    "polaris-core": "^0.9.9",
-    "polaris-colors": "^1.3.2",
+    "polaris-core": "^0.9.13",
+    "polaris-colors": "^1.4.2",
     "sass": "^1.56.1",
     "typescript": "^4.9.3",
     "webpack": "^5.75.0",

@@ -20,7 +20,7 @@ return /******/ (() => { // webpackBootstrap
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "Animations": () => (/* binding */ Animations)
+/* harmony export */   Animations: () => (/* binding */ Animations)
 /* harmony export */ });
 /* harmony import */ var _Helpers__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Helpers */ "./node_modules/polaris-core/dist/js/modules/Helpers.js");
 /**
@@ -320,7 +320,7 @@ class Animations extends _Helpers__WEBPACK_IMPORTED_MODULE_0__.Helpers {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "Config": () => (/* binding */ Config)
+/* harmony export */   Config: () => (/* binding */ Config)
 /* harmony export */ });
 /**
  * @desc Used for the configuration of Polaris JS library
@@ -360,6 +360,10 @@ class Config {
         this.nameHeight = "h"; // Name key for css height classes
         this.nameRadius = "round"; // Name key for border-radius & component roundness
         this.namePosition = "position"; // Name key for position classes
+        this.nameDraggable = "draggable"; // Name key for draggable
+        this.nameDragging = "dragging"; // 2nd name key for draggable-dragging
+        this.nameSwapping = "swapping"; // 2nd name key for draggable-swapping
+        this.nameDragAuto = "auto"; // 2nd name key for draggable__auto
         this.fadeInAnimation = "fadeIn"; // fadeIn animation
         this.fadeOutAnimation = "fadeOut"; // fadeOut animation
         this.hideYAnimation = "hideY"; // hideY animation
@@ -389,7 +393,7 @@ class Config {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "Helpers": () => (/* binding */ Helpers)
+/* harmony export */   Helpers: () => (/* binding */ Helpers)
 /* harmony export */ });
 /* harmony import */ var _Config__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Config */ "./node_modules/polaris-core/dist/js/modules/Config.js");
 /**
@@ -1132,6 +1136,25 @@ class Helpers extends _Config__WEBPACK_IMPORTED_MODULE_0__.Config {
         listener.observe(elem, { attributes: true });
         return listener.disconnect;
     }
+    /**
+     * @desc For swaping two nodes from the same flow
+     *
+     * @param {HTMLElement} nodeA -- The first node
+     * @param {HTMLElement} nodeB -- The second node
+     *
+     * @var {HTMLElement} siblingA -- The sibling of first node
+     *
+     * @return {void}
+     */
+    swap(nodeA, nodeB) {
+        // Find the next sibling of nodeA
+        const siblingA = (nodeA.nextSibling === nodeB) ? nodeA : nodeA.nextSibling;
+        // Move nodeA before the nodeB
+        nodeB.parentNode.insertBefore(nodeA, nodeB);
+        // Move nodeB before the next sibling of nodeA
+        nodeA.parentNode.insertBefore(nodeB, siblingA);
+    }
+    ;
 }
 //# sourceMappingURL=Helpers.js.map
 
@@ -1145,7 +1168,7 @@ class Helpers extends _Config__WEBPACK_IMPORTED_MODULE_0__.Config {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "Slideshow": () => (/* binding */ Slideshow)
+/* harmony export */   Slideshow: () => (/* binding */ Slideshow)
 /* harmony export */ });
 /* harmony import */ var polaris_core_dist_js_modules_Animations__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! polaris-core/dist/js/modules/Animations */ "./node_modules/polaris-core/dist/js/modules/Animations.js");
 
@@ -1609,16 +1632,19 @@ class Slideshow extends polaris_core_dist_js_modules_Animations__WEBPACK_IMPORTE
                     this.append("div", this.slideshow, "", [this.nameSlideshow + this.chiSep + this.nameSlideshowCounter]);
                 }
             }
+            // Create controls
+            if (!this.slideshow.querySelector(`.${this.nameSlideshow + this.chiSep + this.nameSlideshowPrev}`)) {
+                const controlsContent = '&#10094;';
+                this.append("div", this.slideshow, controlsContent, [this.nameSlideshow + this.chiSep + this.nameSlideshowPrev]);
+            }
+            if (!this.slideshow.querySelector(`.${this.nameSlideshow + this.chiSep + this.nameSlideshowNext}`)) {
+                const controlsContent = '&#10095;';
+                this.append("div", this.slideshow, controlsContent, [this.nameSlideshow + this.chiSep + this.nameSlideshowNext]);
+            }
             // Check controls
-            if (this.options['hasControls']) {
-                if (!this.slideshow.querySelector(`.${this.nameSlideshow + this.chiSep + this.nameSlideshowPrev}`)) {
-                    const controlsContent = '&#10094;';
-                    this.append("div", this.slideshow, controlsContent, [this.nameSlideshow + this.chiSep + this.nameSlideshowPrev]);
-                }
-                if (!this.slideshow.querySelector(`.${this.nameSlideshow + this.chiSep + this.nameSlideshowNext}`)) {
-                    const controlsContent = '&#10095;';
-                    this.append("div", this.slideshow, controlsContent, [this.nameSlideshow + this.chiSep + this.nameSlideshowNext]);
-                }
+            if (!this.options['hasControls']) {
+                this.slideshowPrev.style.display = 'none';
+                this.slideshowNext.style.display = 'none';
             }
             // Check dots
             if (this.options['hasDots']) {
@@ -2443,7 +2469,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _modules_Slideshow__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./modules/Slideshow */ "./src/ts/modules/Slideshow.ts");
 /**
- * Polaris Slideshow Plugin v1.4.7
+ * Polaris Slideshow Plugin v1.5.0
  * MIT License github.com/heminsatya/polaris-plugins | © 2022 polarisui.com
 **/
 /**

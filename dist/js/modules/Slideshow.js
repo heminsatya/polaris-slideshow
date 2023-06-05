@@ -459,16 +459,19 @@ export class Slideshow extends Animations {
                     this.append("div", this.slideshow, "", [this.nameSlideshow + this.chiSep + this.nameSlideshowCounter]);
                 }
             }
+            // Create controls
+            if (!this.slideshow.querySelector(`.${this.nameSlideshow + this.chiSep + this.nameSlideshowPrev}`)) {
+                const controlsContent = '&#10094;';
+                this.append("div", this.slideshow, controlsContent, [this.nameSlideshow + this.chiSep + this.nameSlideshowPrev]);
+            }
+            if (!this.slideshow.querySelector(`.${this.nameSlideshow + this.chiSep + this.nameSlideshowNext}`)) {
+                const controlsContent = '&#10095;';
+                this.append("div", this.slideshow, controlsContent, [this.nameSlideshow + this.chiSep + this.nameSlideshowNext]);
+            }
             // Check controls
-            if (this.options['hasControls']) {
-                if (!this.slideshow.querySelector(`.${this.nameSlideshow + this.chiSep + this.nameSlideshowPrev}`)) {
-                    const controlsContent = '&#10094;';
-                    this.append("div", this.slideshow, controlsContent, [this.nameSlideshow + this.chiSep + this.nameSlideshowPrev]);
-                }
-                if (!this.slideshow.querySelector(`.${this.nameSlideshow + this.chiSep + this.nameSlideshowNext}`)) {
-                    const controlsContent = '&#10095;';
-                    this.append("div", this.slideshow, controlsContent, [this.nameSlideshow + this.chiSep + this.nameSlideshowNext]);
-                }
+            if (!this.options['hasControls']) {
+                this.slideshowPrev.style.display = 'none';
+                this.slideshowNext.style.display = 'none';
             }
             // Check dots
             if (this.options['hasDots']) {

@@ -1,6 +1,6 @@
-# Polaris Slideshow Plugin (v1.4.7)
+# Polaris Slideshow Plugin (v1.5.0)
 
-In addition to the built-in core colors comes with [Polaris framework](https://github.com/heminsatya/polaris-core), you can also use a set of flat and beautiful colors.
+In addition to the built-in features and components comes with [Polaris framework](https://github.com/heminsatya/polaris), you can also use a set of useful plugins.
 
 Usings Polaris Slideshow Plugin, you can easily create responsive JavaScript slideshows for HTML elements.
 
