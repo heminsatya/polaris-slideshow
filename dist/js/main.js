@@ -2469,7 +2469,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _modules_Slideshow__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./modules/Slideshow */ "./src/ts/modules/Slideshow.ts");
 /**
- * Polaris Slideshow Plugin v1.5.0
+ * Polaris Slideshow Plugin v1.5.1
  * MIT License github.com/heminsatya/polaris-plugins | © 2022 polarisui.com
 **/
 /**
