@@ -1620,17 +1620,13 @@ class Slideshow extends polaris_core_dist_js_modules_Animations__WEBPACK_IMPORTE
          *  Single & Multiple slide
          */
         if (this.itemsCount >= 1) {
-            // Check progress
-            if (this.options['hasProgress']) {
-                if (!this.slideshow.querySelector(`.${this.nameSlideshow + this.chiSep + this.nameSlideshowProgress}`)) {
-                    this.append("div", this.slideshow, "", [this.nameSlideshow + this.chiSep + this.nameSlideshowProgress]);
-                }
+            // Create progress
+            if (!this.slideshow.querySelector(`.${this.nameSlideshow + this.chiSep + this.nameSlideshowProgress}`)) {
+                this.append("div", this.slideshow, "", [this.nameSlideshow + this.chiSep + this.nameSlideshowProgress]);
             }
-            // Check counter
-            if (this.options['hasCounter']) {
-                if (!this.slideshow.querySelector(`.${this.nameSlideshow + this.chiSep + this.nameSlideshowCounter}`)) {
-                    this.append("div", this.slideshow, "", [this.nameSlideshow + this.chiSep + this.nameSlideshowCounter]);
-                }
+            // Create counter
+            if (!this.slideshow.querySelector(`.${this.nameSlideshow + this.chiSep + this.nameSlideshowCounter}`)) {
+                this.append("div", this.slideshow, "", [this.nameSlideshow + this.chiSep + this.nameSlideshowCounter]);
             }
             // Create controls
             if (!this.slideshow.querySelector(`.${this.nameSlideshow + this.chiSep + this.nameSlideshowPrev}`)) {
@@ -1641,21 +1637,14 @@ class Slideshow extends polaris_core_dist_js_modules_Animations__WEBPACK_IMPORTE
                 const controlsContent = '&#10095;';
                 this.append("div", this.slideshow, controlsContent, [this.nameSlideshow + this.chiSep + this.nameSlideshowNext]);
             }
-            // Check controls
-            if (!this.options['hasControls']) {
-                this.slideshowPrev.style.display = 'none';
-                this.slideshowNext.style.display = 'none';
-            }
-            // Check dots
-            if (this.options['hasDots']) {
-                if (!this.slideshow.querySelector(`.${this.nameSlideshow + this.chiSep + this.nameSlideshowDots}`)) {
-                    let dotsContent = '';
-                    for (let i = 0; i < this.itemsCount; i++) {
-                        this.slideshowItems[i].dataset.index = i;
-                        dotsContent += `<li data-index="${i}"></li>`;
-                    }
-                    this.append("ul", this.slideshow, dotsContent, [this.nameSlideshow + this.chiSep + this.nameSlideshowDots]);
+            // Create dots
+            if (!this.slideshow.querySelector(`.${this.nameSlideshow + this.chiSep + this.nameSlideshowDots}`)) {
+                let dotsContent = '';
+                for (let i = 0; i < this.itemsCount; i++) {
+                    this.slideshowItems[i].dataset.index = i;
+                    dotsContent += `<li data-index="${i}"></li>`;
                 }
+                this.append("ul", this.slideshow, dotsContent, [this.nameSlideshow + this.chiSep + this.nameSlideshowDots]);
             }
             // Update slide items
             this.slideshowProgress = this.slideshow.querySelector(`.${this.nameSlideshow + this.chiSep + this.nameSlideshowProgress}`);
@@ -1670,17 +1659,45 @@ class Slideshow extends polaris_core_dist_js_modules_Animations__WEBPACK_IMPORTE
                 // Update the active dot
                 this.activeDot = this.slideshowDots[0];
             }
+            // Check progress
+            if (!this.options['hasProgress']) {
+                this.slideshowProgress.style.display = 'none';
+            }
+            // Check counter
+            if (!this.options['hasCounter']) {
+                this.slideshowCounter.style.display = 'none';
+            }
+            // Check controls
+            if (!this.options['hasControls']) {
+                this.slideshowPrev.style.display = 'none';
+                this.slideshowNext.style.display = 'none';
+            }
+            // Check dots
+            if (!this.options['hasDots']) {
+                this.slideshow.querySelector(`.${this.nameSlideshow + this.chiSep + this.nameSlideshowDots}`).style.display = 'none';
+            }
         }
         /**
          *  Single slide
          */
         if (this.itemsCount == 1) {
-            // Hide progress & controls
-            this.slideshowProgress.style.display = 'none';
-            this.slideshowPrev.style.display = 'none';
-            this.slideshowNext.style.display = 'none';
-            // Hide dots parent
-            this.slideshow.querySelector(`.${this.nameSlideshow + this.chiSep + this.nameSlideshowDots}`).style.display = 'none';
+            // Check progress
+            if (this.options['hasProgress']) {
+                this.slideshowProgress.style.display = 'none';
+            }
+            // Check counter
+            if (this.options['hasCounter']) {
+                this.slideshowCounter.style.display = 'none';
+            }
+            // Check controls
+            if (this.options['hasControls']) {
+                this.slideshowPrev.style.display = 'none';
+                this.slideshowNext.style.display = 'none';
+            }
+            // Check dots
+            if (this.options['hasDots']) {
+                this.slideshow.querySelector(`.${this.nameSlideshow + this.chiSep + this.nameSlideshowDots}`).style.display = 'none';
+            }
         }
         /**
          *  Set slideshow width, height
@@ -1863,7 +1880,7 @@ class Slideshow extends polaris_core_dist_js_modules_Animations__WEBPACK_IMPORTE
      * @return {void}
      */
     prevSlide() {
-        if (this.options['hasControls']) {
+        if (this.slideshowPrev) {
             this.slideshowPrev.onclick = () => {
                 // Find previous index
                 let index = this.activeIndex - 1;
@@ -1883,7 +1900,7 @@ class Slideshow extends polaris_core_dist_js_modules_Animations__WEBPACK_IMPORTE
      * @return {void}
      */
     nextSlide() {
-        if (this.options['hasControls']) {
+        if (this.slideshowNext) {
             this.slideshowNext.onclick = () => {
                 // Find next index
                 let index = this.activeIndex + 1;
@@ -1925,7 +1942,7 @@ class Slideshow extends polaris_core_dist_js_modules_Animations__WEBPACK_IMPORTE
      * @return {void}
      */
     autoSlide(timeout = 0) {
-        if (this.options['isAutoplay']) {
+        if (this.options['isAutoplay'] && this.itemsCount > 1) {
             let remain;
             // Set remain time
             if (timeout)
@@ -2469,7 +2486,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _modules_Slideshow__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./modules/Slideshow */ "./src/ts/modules/Slideshow.ts");
 /**
- * Polaris Slideshow Plugin v1.5.1
+ * Polaris Slideshow Plugin v1.6.0
  * MIT License github.com/heminsatya/polaris-plugins | © 2022 polarisui.com
 **/
 /**
