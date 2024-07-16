@@ -1,6 +1,6 @@
 /**
- * Polaris Slideshow Plugin v1.6.0
- * MIT License github.com/heminsatya/polaris-plugins | © 2022 polarisui.com
+ * Polaris Slideshow Plugin v1.7.0
+ * MIT License github.com/heminsatya/polaris-plugins | © 2024 polarisui.com
 **/
 // -------------------------------------------------- //
 //                    Dependencies                    //
@@ -34,7 +34,7 @@ $name-item-active: '.' + $name-slideshow + $chi + $name-slideshow-item + '.' + $
 
 // Media
 @include child-styles($slideshow-media, $name-slideshow, $name-slideshow-media);
-@include child-item-styles($slideshow-media-items, $name-slideshow, $name-slideshow-media);
+@include child-styles-items($slideshow-media-items, $name-slideshow, $name-slideshow-media);
 
 $name-media-active: '.' + $name-slideshow + $chi + $name-slideshow-item + '.' + $name-active + ' .' + $name-slideshow + $chi + $name-slideshow-media;
 @include custom-styles($slideshow-media-active, $name-media-active);
@@ -51,7 +51,7 @@ $name-media-active: '.' + $name-slideshow + $chi + $name-slideshow-item + '.' + 
     margin-bottom: 0
 }
 
-@include child-colors($caption-colors, $name-slideshow, $name-slideshow-caption);
+@include modifier-colors-items($caption-colors, $name-slideshow, "." + $name-slideshow + $chi + $name-slideshow-caption, true);
 
 // Overlays
 @include child-styles($slideshow-overlays, $name-slideshow, $name-slideshow-overlays);
@@ -59,11 +59,11 @@ $name-media-active: '.' + $name-slideshow + $chi + $name-slideshow-item + '.' + 
 // Options
 // Progress
 @include child-styles($slideshow-progress, $name-slideshow, $name-slideshow-progress, false, true, $slideshow-progress-ltr, $slideshow-progress-rtl);
-@include child-colors($progress-colors, $name-slideshow, $name-slideshow-progress);
+@include modifier-colors-items($progress-colors, $name-slideshow, "." + $name-slideshow + $chi + $name-slideshow-progress, true);
 
 // Counter
 @include child-styles($slideshow-counter, $name-slideshow, $name-slideshow-counter, false, true, $slideshow-counter-ltr, $slideshow-counter-rtl);
-@include child-colors($counter-colors, $name-slideshow, $name-slideshow-counter);
+@include modifier-colors-items($counter-colors, $name-slideshow, "." + $name-slideshow + $chi + $name-slideshow-counter, true);
 
 // Controls
 $name-controls: '.' + $name-slideshow + $chi + $name-slideshow-prev + ', .' + $name-slideshow + $chi + $name-slideshow-next;
@@ -74,20 +74,20 @@ $name-controls-hover: '.' + $name-slideshow + ':hover .' + $name-slideshow + $ch
 @include child-styles($slideshow-prev, $name-slideshow, $name-slideshow-prev, false, true, $slideshow-prev-ltr, $slideshow-prev-rtl);
 @include child-styles($slideshow-next, $name-slideshow, $name-slideshow-next, false, true, $slideshow-next-ltr, $slideshow-next-rtl);
 
-@include child-colors($controls-colors, $name-slideshow, $name-slideshow-prev);
-@include child-colors-hover($controls-colors-hover, $name-slideshow, $name-slideshow-prev);
+@include modifier-colors-items($controls-colors, $name-slideshow, "." + $name-slideshow + $chi + $name-slideshow-prev, true);
+@include modifier-colors-items-hover($controls-colors-hover, $name-slideshow, "." + $name-slideshow + $chi + $name-slideshow-prev, true);
 
-@include child-colors($controls-colors, $name-slideshow, $name-slideshow-next);
-@include child-colors-hover($controls-colors-hover, $name-slideshow, $name-slideshow-next);
+@include modifier-colors-items($controls-colors, $name-slideshow, "." + $name-slideshow + $chi + $name-slideshow-next, true);
+@include modifier-colors-items-hover($controls-colors-hover, $name-slideshow, "." + $name-slideshow + $chi + $name-slideshow-next, true);
 
 // Dots 
 @include child-styles($slideshow-dots, $name-slideshow, $name-slideshow-dots, false, true, $slideshow-dots-ltr, $slideshow-dots-rtl);
-@include child-item-styles($slideshow-dots-li, $name-slideshow, $name-slideshow-dots, 'li');
+@include child-styles-items($slideshow-dots-li, $name-slideshow, $name-slideshow-dots, 'li');
 
 $name-active-dot: '.' + $name-slideshow + $chi + $name-slideshow-dots + ' > li.' + $name-active;
 @include custom-styles($slideshow-active-dot, $name-active-dot);
 
-@include child-item-colors($dots-li-colors, $name-slideshow, $name-slideshow-dots, 'li');
+@include modifier-colors-items($dots-li-colors, $name-slideshow, "." + $name-slideshow + $chi + $name-slideshow-dots + " > li", true);
 
 // Filter
 @include child-styles($filter-styles, $name-slideshow, $name-slideshow-filter);

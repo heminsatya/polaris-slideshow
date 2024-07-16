@@ -1,4 +1,4 @@
-# Polaris Slideshow Plugin (v1.6.0)
+# Polaris Slideshow Plugin (v1.7.0)
 
 In addition to the built-in features and components comes with [Polaris framework](https://github.com/heminsatya/polaris), you can also use a set of useful plugins.
 

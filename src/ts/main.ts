@@ -1,6 +1,6 @@
 /**
- * Polaris Slideshow Plugin v1.6.0
- * MIT License github.com/heminsatya/polaris-plugins | © 2022 polarisui.com
+ * Polaris Slideshow Plugin v1.7.0
+ * MIT License github.com/heminsatya/polaris-plugins | © 2024 polarisui.com
 **/
 /**
  * Import the Core Class

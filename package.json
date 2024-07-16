@@ -1,6 +1,6 @@
 {
   "name": "polaris-slideshow",
-  "version": "1.6.0",
+  "version": "1.7.0",
   "description": "Polaris Slideshow Plugin for Polaris Framework. A responsive JavaScript slideshow for HTML elements.",
   "author": "Hemin Satya",
   "license": "MIT",
@@ -32,8 +32,8 @@
     "url": "https://github.com/heminsatya/polaris-slideshow/issues"
   },
   "devDependencies": {
-    "polaris-core": "^0.9.15",
-    "polaris-colors": "^1.4.2",
+    "polaris-core": "^1.0.0",
+    "polaris-colors": "^1.5.1",
     "sass": "^1.56.1",
     "typescript": "^4.9.3",
     "webpack": "^5.75.0",
@@ -43,9 +43,9 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "css": "sass src/scss/main.scss dist/css/main.min.css --style compressed --load-path=node_modules",
+    "css": "sass src/scss/main.scss dist/css/main.min.css --style compressed --load-path=node_modules --no-source-map",
     "css-dev": "sass src/scss/main.scss dist/css/main.css --watch --load-path=node_modules",
-    "css-rtl": "sass src/scss/main-rtl.scss dist/css/main-rtl.min.css --style compressed --load-path=node_modules",
+    "css-rtl": "sass src/scss/main-rtl.scss dist/css/main-rtl.min.css --style compressed --load-path=node_modules --no-source-map",
     "css-rtl-dev": "sass src/scss/main-rtl.scss dist/css/main-rtl.css --watch --load-path=node_modules",
     "js-mod": "tsc --watch",
     "js": "webpack",

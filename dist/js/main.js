@@ -256,53 +256,50 @@ class Animations extends _Helpers__WEBPACK_IMPORTED_MODULE_0__.Helpers {
         }
     }
     /**
-     * @desc For navigation active class on page scroll
+     * @desc For navigation active class (for page scroll)
      *
-     * @param {string | object} selector  -- The selector name (object)
-     * @param {string | object} navigator -- The navigator selector name (object)
-     * @param {string}          active    -- The navigator active class
-     * @param {number}          tolerance -- The scroll tolerance
+     * @param {string | object} navigators -- The navigators selector name (object)
+     * @param {string | object} navigateds -- The navigateds selector name (object)
+     * @param {string}          active     -- The navigator active class
+     * @param {number}          tolerance  -- The scroll tolerance
      *
      * @return {void | boolean}
      */
-    navigated(selector, navigator, active = 'active', tolerance = 0) {
-        let selectors = null;
-        let navigators = null;
-        // Check the selectors
-        if (this.exist(selector)['status']) {
-            if (typeof (selector) === "string") {
-                selectors = document.querySelectorAll(selector);
-            }
-            else if (typeof (selector) === "object") {
-                selectors = selector;
-            }
-        }
-        else {
-            throw this.exist(selector)['message'];
-        }
-        // Check the navigators
-        if (this.exist(navigator)['status']) {
-            if (typeof (navigator) === "string") {
-                navigators = document.querySelectorAll(navigator);
+    navigated(navigators, navigateds, active = 'active', tolerance = 0) {
+        // Check the navigator selectors
+        if (this.exist(navigators)['status']) {
+            if (typeof (navigators) === "string") {
+                navigators = document.querySelectorAll(navigators);
             }
             else if (typeof (navigator) === "object") {
-                navigators = navigator;
+                navigators = navigators;
             }
         }
         else {
-            throw this.exist(navigator)['message'];
+            throw this.exist(navigators)['message'];
         }
-        // Navigation links
-        selectors.forEach((node) => {
-            let top = window.scrollY;
-            let height = node.offsetHeight;
-            let offset = node.offsetTop - tolerance;
-            let id = node.getAttribute("id");
+        // Check the navigated selectors
+        if (this.exist(navigateds)['status']) {
+            if (typeof (navigateds) === "string") {
+                navigateds = document.querySelectorAll(navigateds);
+            }
+            else if (typeof (navigateds) === "object") {
+                navigateds = navigateds;
+            }
+        }
+        else {
+            throw this.exist(navigateds)['message'];
+        }
+        // Handle navigators active class
+        navigateds.forEach((node) => {
+            const scroll = window.scrollY;
+            const height = node.offsetHeight;
+            const offset = node.getBoundingClientRect().top + window.scrollY - tolerance; // node.offsetTop - tolerance;
+            const id = node.getAttribute("id");
             // Set the active class
-            if (top >= offset && top < offset + height) {
+            if (scroll >= offset && scroll < offset + height) {
                 navigators.forEach((link) => {
-                    link.classList.remove(active);
-                    document.querySelector(`${navigator}[href*=${id}`).classList.add(active);
+                    (link.getAttribute("href") == '#' + id) ? link.classList.add(active) : link.classList.remove(active);
                 });
             }
         });
@@ -334,15 +331,6 @@ class Config {
         this.nameDoc = "doc"; // Name key for document component
         this.nameLight = "light"; // Name key for light color
         this.nameDark = "dark"; // Name key for dark color
-        this.nameAnimation = "animation"; // Name key for animation component
-        this.nameAnimated = "animated"; // Name key for animation-animated
-        this.nameRipple = "ripple"; // Name key for ripple component
-        this.nameAlert = "alert"; // Name key for alert component
-        this.nameMessages = "msg"; // Name key for msg component
-        this.nameBackdrop = "backdrop"; // Name key for backdrop component
-        this.namePopup = "popup"; // Name key for popup component
-        this.nameMenu = "menu"; // Name key for menu component
-        this.nameModal = "modal"; // Name key for modal component
         this.nameBlueprint = "blueprint"; // Name key for component's blueprint
         this.nameContainer = "container"; // Name key for container
         this.nameControl = "control"; // Name key for control
@@ -351,7 +339,7 @@ class Config {
         this.nameClose = "close"; // Name key for close
         this.nameClick = "click"; // Name key for click
         this.nameActive = "active"; // Name key for active
-        this.nameVoid = "void"; // Name key for active
+        this.nameVoid = "void"; // Name key for void
         this.nameOpen = "open"; // Name key for open inffix
         this.nameHeader = "header"; // Name key for header
         this.nameBody = "body"; // Name key for body
@@ -360,25 +348,78 @@ class Config {
         this.nameHeight = "h"; // Name key for css height classes
         this.nameRadius = "round"; // Name key for border-radius & component roundness
         this.namePosition = "position"; // Name key for position classes
-        this.nameDraggable = "draggable"; // Name key for draggable
-        this.nameDragging = "dragging"; // 2nd name key for draggable-dragging
-        this.nameSwapping = "swapping"; // 2nd name key for draggable-swapping
-        this.nameDragAuto = "auto"; // 2nd name key for draggable__auto
+        this.nameAnimation = "animation"; // Name key for animation component
+        this.nameAnimated = "animated"; // Name key for animation-animated
+        this.nameRipple = "ripple"; // Name key for ripple component
+        this.nameRange = "range"; // Name key for range
+        this.nameChip = "chip"; // Name key for chip
+        this.nameChipItems = "items"; // 2nd name key for chip--items
+        this.nameChipItem = "item"; // 2nd name key for chip--item
+        this.nameChipText = "text"; // 2nd name key for chip--text
+        this.nameChipClose = "close"; // 2nd name key for chip--close
+        this.nameChipInput = "input"; // 2nd name key for chip--input
+        this.nameChipOutput = "output"; // 2nd name key for chip--output
+        this.nameAuto = "auto"; // Name key for auto
+        this.nameAutoInput = "input"; // 2nd name key for auto--input
+        this.nameAutoOutput = "output"; // 2nd name key for auto--output
+        this.nameAutoOpen = "open"; // 2nd name key for auto--open
+        this.nameAlert = "alert"; // Name key for alert component
+        this.nameMessages = "msg"; // Name key for msg component
+        this.nameBackdrop = "backdrop"; // Name key for backdrop component
+        this.namePopup = "popup"; // Name key for popup component
+        this.nameMenu = "menu"; // Name key for menu component
+        this.nameModal = "modal"; // Name key for modal component
+        this.nameDrag = "drag"; // Name key for drag
+        this.nameDragging = "dragging"; // 2nd name key for drag--dragging
+        this.nameSwapping = "swapping"; // 2nd name key for drag--swapping
+        this.nameDragAuto = "auto"; // 2nd name key for drag-auto
+        this.nameTab = "tab"; // Name key for tab
+        this.nameTabAuto = "auto"; // 2nd name key for tab-auto
+        this.nameTabLink = "link"; // 2nd name key for tab--link
+        this.nameTabContent = "content"; // 2nd name key for tab--content
+        this.nameAccord = "accord"; // Name key for accordion
+        this.nameAccordUnique = "unique"; // 2nd name key for accord-unique
+        this.nameAccordLink = "link"; // 2nd name key for accord--link
+        this.nameCounter = "counter"; // Name key for counter
+        this.nameCounterAuto = "auto"; // 2nd name key for counter-auto
+        this.nameCounterCounting = "counting"; // 2nd name key for counter-counting
+        this.piAlertCircle = "pi-alert-circle"; // Polaris Icon: alert-circle
+        this.piAlertTri = "pi-alert-triangle"; // Polaris Icon: alert-triangle
+        this.piAlertTick = "pi-alert-tick"; // Polaris Icon: alert-tick
+        this.piClose = "pi-close"; // Polaris Icon: close
         this.fadeInAnimation = "fadeIn"; // fadeIn animation
         this.fadeOutAnimation = "fadeOut"; // fadeOut animation
         this.hideYAnimation = "hideY"; // hideY animation
         this.rippleAnimation = "ripple"; // ripple animation
         this.rippleAutoAnimation = "rippleAuto"; // rippleAuto animation
-        this.piAlertCircle = "pi-alert-circle"; // Polaris Icon: alert-circle
-        this.piAlertTri = "pi-alert-triangle"; // Polaris Icon: alert-triangle
-        this.piAlertTick = "pi-alert-tick"; // Polaris Icon: alert-tick
-        this.piClose = "pi-close"; // Polaris Icon: close
         this.hideTimeout = 8000; // Default hide timeout (in miliseconds)
         this.alertPosition = "bottom"; // Alert default position
         this.polarisSizes = ['xs', 'sm', 'md', 'lg', 'xl']; // Polaris standard sizes
         this.phoneWidth = 0; // Smartphone min-width
         this.tabletWidth = 768; // Tablet min-width
         this.desktopWidth = 1280; // Desktop min-width
+        this.rangeWidthXS = 1; // XS range slider thumb width (rem)
+        this.rangeWidthSM = 1.25; // SM range slider thumb width (rem)
+        this.rangeWidthMD = 1.5; // MD range slider thumb width (rem)
+        this.rangeWidthLG = 1.75; // LG range slider thumb width (rem)
+        this.rangeWidthXL = 2; // XL range slider thumb width (rem)
+        this.hasBackdropBlueprint = true; // Backdrop blueprint status
+        this.hasAlertBlueprint = true; // Alert blueprint status
+        this.hasModalBlueprint = true; // Modal blueprint status
+        this.hasDocDefaults = true; // Document default classes status
+        this.hasLinkDefaults = true; // Void links defaults status
+        this.hasRippleDefaults = true; // Ripple default animations status
+        this.hasAnimationDefaults = true; // Animation default datasets status
+        this.hasRangeDefaults = true; // Range slider default status
+        this.hasChipDefaults = true; // Chips default status
+        this.hasAutoDefaults = true; // Autocomplete default status
+        this.hasMessageDefaults = true; // Closable messages defaults status
+        this.hasPopupDefaults = true; // Clickable & animated popups defaults status
+        this.hasMenuDefaults = true; // Clickable & animated menus defaults status
+        this.hasDragDefaults = true; // Auto drag items status
+        this.hasTabDefaults = true; // Tabs defaults status
+        this.hasAccordDefaults = true; // Accordions defaults status
+        this.hasCounterDefaults = true; // Counters defaults status
     }
 }
 //# sourceMappingURL=Config.js.map
@@ -489,6 +530,27 @@ class Helpers extends _Config__WEBPACK_IMPORTED_MODULE_0__.Config {
         return result;
     }
     /**
+     * @desc Returns the equivalent HTMLElement of a selector
+     *
+     * @param {string | HTMLElement} selector -- The selector name (object)
+     *
+     * @return {HTMLElement}
+     */
+    query(selector = null) {
+        // Check the selector
+        if (this.exist(selector)['status']) {
+            if (typeof (selector) === "string") {
+                return document.querySelector(selector);
+            }
+            else if (typeof (selector) === "object") {
+                return selector;
+            }
+        }
+        else {
+            throw this.exist(selector)['message'];
+        }
+    }
+    /**
      * @desc Produces the querySelector object
      *
      * @param {string} selector -- The selector name
@@ -575,7 +637,7 @@ class Helpers extends _Config__WEBPACK_IMPORTED_MODULE_0__.Config {
      *
      * @param {string}          selector  -- The selector name
      * @param {string | object} parent    -- The selector's parent name (object)
-     * @param {string}          content   -- The selector's content
+     * @param {string}          content   -- The selector's content | value
      * @param {object}          classList -- The selector's class list ['class-1', 'class-2', ...]
      * @param {string}          id        -- The selector's id name
      * @param {string}          style     -- The selector's inline CSS styles
@@ -622,7 +684,12 @@ class Helpers extends _Config__WEBPACK_IMPORTED_MODULE_0__.Config {
             }
         }
         // Prepend the node
-        node.innerHTML = content;
+        try {
+            node.innerHTML = content;
+        }
+        catch (error) {
+            node.value = content;
+        }
         parentNode.insertBefore(node, parentNode.firstChild);
         // Return the node
         return node;
@@ -632,7 +699,7 @@ class Helpers extends _Config__WEBPACK_IMPORTED_MODULE_0__.Config {
      *
      * @param {string}          selector  -- The selector name
      * @param {string | object} parent    -- The selector's parent name (object)
-     * @param {string}          content   -- The selector's content
+     * @param {string}          content   -- The selector's content | value
      * @param {object}          classList -- The selector's class list ['class-1', 'class-2', ...]
      * @param {string}          id        -- The selector's id name
      * @param {string}          style     -- The selector's inline CSS styles
@@ -679,7 +746,12 @@ class Helpers extends _Config__WEBPACK_IMPORTED_MODULE_0__.Config {
             }
         }
         // Append the node
-        node.innerHTML = content;
+        try {
+            node.innerHTML = content;
+        }
+        catch (error) {
+            node.value = content;
+        }
         parentNode.appendChild(node);
         // Return the node
         return node;
@@ -724,22 +796,36 @@ class Helpers extends _Config__WEBPACK_IMPORTED_MODULE_0__.Config {
      * @desc Loops a function for a couple of times
      *
      * @param {function} fn    -- The function that needed to be looped
-     * @param {number}   delay -- The time delay for each iteration
+     * @param {number}   speed -- The time speed for each iteration
+     * @param {number}   delay -- The time delay for loop
      * @param {number}   count -- The loop count
+     * @param {function} cf    -- The callback function for the last loop
      *
      * @return {void}
      */
-    loop(fn, delay = 1000, count = Infinity) {
-        let i = 0;
-        let interval = setInterval(() => {
-            // Exit the loop
-            if (i == count || count <= 0) {
-                clearInterval(interval);
-                return false;
-            }
-            // Invoke the function
+    loop(fn, speed = 1000, delay = 0, count = Infinity, cf = () => { }) {
+        setTimeout(() => {
+            // Function initial invoke
             fn();
-            i++;
+            // Start looping
+            let i = 0;
+            let interval = setInterval(() => {
+                // Last loop
+                if (i == count || count <= 0) {
+                    // Terminate the loop
+                    return false;
+                }
+                // One before the last loop
+                if (i == count - 1) {
+                    // Invoke callback
+                    cf();
+                    // Clear the interval
+                    clearInterval(interval);
+                }
+                // Invoke the function
+                fn();
+                i++;
+            }, speed);
         }, delay);
     }
     /**
@@ -793,6 +879,14 @@ class Helpers extends _Config__WEBPACK_IMPORTED_MODULE_0__.Config {
      */
     href() {
         return this.replace(window.location.href, window.location.origin, "");
+    }
+    /**
+     * @desc Finds URL hash
+     *
+     * @return {string}
+     */
+    hash() {
+        return window.location.hash;
     }
     /**
      * @desc Calculates the scrollbar width
@@ -2486,8 +2580,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _modules_Slideshow__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./modules/Slideshow */ "./src/ts/modules/Slideshow.ts");
 /**
- * Polaris Slideshow Plugin v1.6.0
- * MIT License github.com/heminsatya/polaris-plugins | © 2022 polarisui.com
+ * Polaris Slideshow Plugin v1.7.0
+ * MIT License github.com/heminsatya/polaris-plugins | © 2024 polarisui.com
 **/
 /**
  * Import the Core Class

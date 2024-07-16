@@ -1,7 +1,7 @@
 @charset "UTF-8";
 /**
- * Polaris Slideshow Plugin v1.6.0
- * MIT License github.com/heminsatya/polaris-plugins | © 2022 polarisui.com
+ * Polaris Slideshow Plugin v1.7.0
+ * MIT License github.com/heminsatya/polaris-plugins | © 2024 polarisui.com
 **/
 /* -------------------------------------------------- */
 /*                      Slideshow                     */
@@ -71,14 +71,14 @@
   margin-bottom: 0;
 }
 
-.slideshow-dark .slideshow--caption,
-.doc-dark .slideshow--caption {
+.doc-dark .slideshow .slideshow--caption,
+.slideshow.slideshow-dark .slideshow--caption {
   color: var(--gray-100, #F4F4F4);
   background-color: rgba(0, 0, 0, 0.75);
 }
 
-.slideshow--caption,
-.slideshow-light .slideshow--caption {
+.slideshow .slideshow--caption,
+.slideshow.slideshow-light .slideshow--caption {
   color: var(--gray-900, #242424);
   background-color: rgba(255, 255, 255, 0.9);
 }
@@ -100,13 +100,13 @@
   right: 0;
 }
 
-.slideshow-dark .slideshow--progress,
-.doc-dark .slideshow--progress {
+.doc-dark .slideshow .slideshow--progress,
+.slideshow.slideshow-dark .slideshow--progress {
   background-color: #242424;
 }
 
-.slideshow--progress,
-.slideshow-light .slideshow--progress {
+.slideshow .slideshow--progress,
+.slideshow.slideshow-light .slideshow--progress {
   background-color: #F4F4F4;
 }
 
@@ -121,14 +121,14 @@
   right: 1rem;
 }
 
-.slideshow-dark .slideshow--counter,
-.doc-dark .slideshow--counter {
+.doc-dark .slideshow .slideshow--counter,
+.slideshow.slideshow-dark .slideshow--counter {
   color: var(--gray-200, #DBDBDB);
   background-color: rgba(0, 0, 0, 0.45);
 }
 
-.slideshow--counter,
-.slideshow-light .slideshow--counter {
+.slideshow .slideshow--counter,
+.slideshow.slideshow-light .slideshow--counter {
   color: var(--gray-800, #3F3F3F);
   background-color: rgba(255, 255, 255, 0.6);
 }
@@ -164,50 +164,50 @@
   left: 1rem;
 }
 
-.slideshow-dark .slideshow--prev,
-.doc-dark .slideshow--prev {
+.doc-dark .slideshow .slideshow--prev,
+.slideshow.slideshow-dark .slideshow--prev {
   color: var(--gray-200, #DBDBDB);
   background-color: rgba(0, 0, 0, 0.55);
 }
 
-.slideshow--prev,
-.slideshow-light .slideshow--prev {
+.slideshow .slideshow--prev,
+.slideshow.slideshow-light .slideshow--prev {
   color: var(--gray-800, #3F3F3F);
   background-color: rgba(255, 255, 255, 0.7);
 }
 
-.slideshow-dark .slideshow--prev:hover,
-.doc-dark .slideshow--prev:hover {
+.doc-dark .slideshow .slideshow--prev:not(:disabled):hover,
+.slideshow.slideshow-dark .slideshow--prev:not(:disabled):hover {
   color: var(--gray-100, #F4F4F4);
   background-color: rgba(0, 0, 0, 0.75);
 }
 
-.slideshow--prev:hover,
-.slideshow-light .slideshow--prev:hover {
+.slideshow .slideshow--prev:not(:disabled):hover,
+.slideshow.slideshow-light .slideshow--prev:not(:disabled):hover {
   color: var(--gray-900, #242424);
   background-color: rgba(255, 255, 255, 0.9);
 }
 
-.slideshow-dark .slideshow--next,
-.doc-dark .slideshow--next {
+.doc-dark .slideshow .slideshow--next,
+.slideshow.slideshow-dark .slideshow--next {
   color: var(--gray-200, #DBDBDB);
   background-color: rgba(0, 0, 0, 0.55);
 }
 
-.slideshow--next,
-.slideshow-light .slideshow--next {
+.slideshow .slideshow--next,
+.slideshow.slideshow-light .slideshow--next {
   color: var(--gray-800, #3F3F3F);
   background-color: rgba(255, 255, 255, 0.7);
 }
 
-.slideshow-dark .slideshow--next:hover,
-.doc-dark .slideshow--next:hover {
+.doc-dark .slideshow .slideshow--next:not(:disabled):hover,
+.slideshow.slideshow-dark .slideshow--next:not(:disabled):hover {
   color: var(--gray-100, #F4F4F4);
   background-color: rgba(0, 0, 0, 0.75);
 }
 
-.slideshow--next:hover,
-.slideshow-light .slideshow--next:hover {
+.slideshow .slideshow--next:not(:disabled):hover,
+.slideshow.slideshow-light .slideshow--next:not(:disabled):hover {
   color: var(--gray-900, #242424);
   background-color: rgba(255, 255, 255, 0.9);
 }
@@ -240,13 +240,13 @@
   width: 2rem;
 }
 
-.slideshow-dark .slideshow--dots > li,
-.doc-dark .slideshow--dots > li {
+.doc-dark .slideshow .slideshow--dots > li,
+.slideshow.slideshow-dark .slideshow--dots > li {
   background-color: rgba(0, 0, 0, 0.75);
 }
 
-.slideshow--dots > li,
-.slideshow-light .slideshow--dots > li {
+.slideshow .slideshow--dots > li,
+.slideshow.slideshow-light .slideshow--dots > li {
   background-color: rgba(255, 255, 255, 0.9);
 }
 
